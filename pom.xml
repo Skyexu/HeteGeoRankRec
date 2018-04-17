@@ -11,7 +11,7 @@
 	</modules>
 	<properties>
 		<librec.version.shortname>2.0.0</librec.version.shortname>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 		<javadoc.encoding>UTF-8</javadoc.encoding>
 		<javadoc.locale>en_US</javadoc.locale>
 		<!-- Build Properties -->

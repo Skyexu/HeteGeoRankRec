@@ -1,0 +1,213 @@
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+Job Train completed.
+Job End.
+Evaluator value:MAE is 1.293515302260018
+Evaluator value:RMSE is 1.572256549107645
+Evaluator value:MSE is 2.4719906562118803
+Evaluator value:MPE is 0.9961896697713802
+Result path is ../result/filmtrust/rating-randomguess-output/randomguess
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+WBPRRecommender iter 1: loss = 43670.24198954935, delta_loss = -43670.242
+WBPRRecommender iter 2: loss = 31903.679971365957, delta_loss = 11766.5625
+WBPRRecommender iter 3: loss = 28860.775436085132, delta_loss = 3042.9045
+WBPRRecommender iter 4: loss = 26921.91818568198, delta_loss = 1938.8573
+WBPRRecommender iter 5: loss = 25439.354792090162, delta_loss = 1482.5634
+WBPRRecommender iter 6: loss = 24332.940397933413, delta_loss = 1106.4144
+WBPRRecommender iter 7: loss = 23509.292237065267, delta_loss = 823.64813
+WBPRRecommender iter 8: loss = 22851.05215654313, delta_loss = 658.24005
+WBPRRecommender iter 9: loss = 22377.823162279146, delta_loss = 473.229
+WBPRRecommender iter 10: loss = 21885.16297876733, delta_loss = 492.6602
+WBPRRecommender iter 11: loss = 21519.37393397085, delta_loss = 365.78903
+WBPRRecommender iter 12: loss = 21203.635548070386, delta_loss = 315.73837
+WBPRRecommender iter 13: loss = 20853.129940659743, delta_loss = 350.5056
+WBPRRecommender iter 14: loss = 20623.033309743285, delta_loss = 230.09663
+WBPRRecommender iter 15: loss = 20381.81078243902, delta_loss = 241.22253
+WBPRRecommender iter 16: loss = 20206.044281730636, delta_loss = 175.7665
+WBPRRecommender iter 17: loss = 19982.587478922633, delta_loss = 223.4568
+WBPRRecommender iter 18: loss = 19803.636965430887, delta_loss = 178.95052
+WBPRRecommender iter 19: loss = 19653.623873631266, delta_loss = 150.01309
+WBPRRecommender iter 20: loss = 19536.906468311623, delta_loss = 116.71741
+Job Train completed.
+Job End.
+Evaluator value:AUC top 10 is 0.7275384122129623
+Evaluator value:PRECISION top 10 is 0.22699289660615612
+Evaluator value:AP top 10 is 0.22751119556097998
+Evaluator value:RR top 10 is 0.2810588692198794
+Evaluator value:RECALL top 10 is 0.27581908882095807
+Evaluator value:Novelty top 10 is 18.793224453840274
+Evaluator value:NDCG top 10 is 0.26483508063076955
+Evaluator value:Entropy top 10 is 17.548868727457272
+Result path is ../result/filmtrust/rating-wbpr-output/wbpr
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 1 Mon Apr 16 16:18:37 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 2 Mon Apr 16 16:18:38 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 3 Mon Apr 16 16:18:38 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 4 Mon Apr 16 16:18:38 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 5 Mon Apr 16 16:18:38 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 6 Mon Apr 16 16:18:38 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 7 Mon Apr 16 16:18:39 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 8 Mon Apr 16 16:18:39 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 9 Mon Apr 16 16:18:39 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 10 Mon Apr 16 16:18:39 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 11 Mon Apr 16 16:18:40 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 12 Mon Apr 16 16:18:40 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 13 Mon Apr 16 16:18:40 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 14 Mon Apr 16 16:18:40 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 15 Mon Apr 16 16:18:41 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 16 Mon Apr 16 16:18:41 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 17 Mon Apr 16 16:18:41 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 18 Mon Apr 16 16:18:41 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 19 Mon Apr 16 16:18:41 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 20 Mon Apr 16 16:18:42 CST 2018
+Job Train completed.
+Job End.
+Evaluator value:AP top 10 is 0.4861256451190488
+Evaluator value:RECALL top 10 is 0.6341464251290702
+Evaluator value:Novelty top 10 is 15.654470311176437
+Evaluator value:RR top 10 is 0.6347872113854757
+Evaluator value:AUC top 10 is 0.9230535402989238
+Evaluator value:NDCG top 10 is 0.5753609458360556
+Evaluator value:Entropy top 10 is 24.249124296947112
+Evaluator value:PRECISION top 10 is 0.3456985003946344
+Result path is ../result/filmtrust/rating-wrmf-output/wrmf
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 1 Mon Apr 16 16:19:44 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 2 Mon Apr 16 16:19:44 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 3 Mon Apr 16 16:19:45 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 4 Mon Apr 16 16:19:45 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 5 Mon Apr 16 16:19:46 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 6 Mon Apr 16 16:19:47 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 7 Mon Apr 16 16:19:48 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 8 Mon Apr 16 16:19:48 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 9 Mon Apr 16 16:19:48 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 10 Mon Apr 16 16:19:48 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 11 Mon Apr 16 16:19:48 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 12 Mon Apr 16 16:19:48 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 13 Mon Apr 16 16:19:49 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 14 Mon Apr 16 16:19:49 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 15 Mon Apr 16 16:19:49 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 16 Mon Apr 16 16:19:49 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 17 Mon Apr 16 16:19:49 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 18 Mon Apr 16 16:19:49 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 19 Mon Apr 16 16:19:49 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 20 Mon Apr 16 16:19:49 CST 2018
+Job Train completed.
+Job End.
+Evaluator value:AP top 10 is 0.4861256451190488
+Evaluator value:RECALL top 10 is 0.6341464251290702
+Evaluator value:Novelty top 10 is 15.654470311176437
+Evaluator value:RR top 10 is 0.6347872113854757
+Evaluator value:AUC top 10 is 0.9230535402989238
+Evaluator value:NDCG top 10 is 0.5753609458360556
+Evaluator value:Entropy top 10 is 24.249124296947112
+Evaluator value:PRECISION top 10 is 0.3456985003946344
+Result path is ../result/filmtrust/rating-wrmf-output/wrmf
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 1 Mon Apr 16 16:54:57 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 2 Mon Apr 16 16:54:57 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 3 Mon Apr 16 16:54:58 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 4 Mon Apr 16 16:54:58 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 5 Mon Apr 16 16:54:58 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 6 Mon Apr 16 16:54:58 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 7 Mon Apr 16 16:54:59 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 8 Mon Apr 16 16:54:59 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 9 Mon Apr 16 16:54:59 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 10 Mon Apr 16 16:54:59 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 11 Mon Apr 16 16:55:00 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 12 Mon Apr 16 16:55:00 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 13 Mon Apr 16 16:55:00 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 14 Mon Apr 16 16:55:00 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 15 Mon Apr 16 16:55:01 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 16 Mon Apr 16 16:55:01 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 17 Mon Apr 16 16:55:01 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 18 Mon Apr 16 16:55:01 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 19 Mon Apr 16 16:55:01 CST 2018
+class net.librec.recommender.cf.ranking.WRMFRecommender runs at iteration = 20 Mon Apr 16 16:55:01 CST 2018
+Job Train completed.
+Job End.
+Evaluator value:AP top 10 is 0.4861256451190488
+Evaluator value:RECALL top 10 is 0.6341464251290702
+Evaluator value:Novelty top 10 is 15.654470311176437
+Evaluator value:RR top 10 is 0.6347872113854757
+Evaluator value:AUC top 10 is 0.9230535402989238
+Evaluator value:NDCG top 10 is 0.5753609458360556
+Evaluator value:Entropy top 10 is 24.249124296947112
+Evaluator value:PRECISION top 10 is 0.3456985003946344
+Result path is ../result/filmtrust/rating-wrmf-output/wrmf
