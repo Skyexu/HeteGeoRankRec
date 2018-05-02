@@ -1,4 +1,4 @@
-package net.librec.mytest;
+package hdu.mytest;
 
 import net.librec.conf.Configuration;
 import net.librec.data.model.TextDataModel;
@@ -7,7 +7,6 @@ import net.librec.eval.ranking.PrecisionEvaluator;
 import net.librec.eval.rating.RMSEEvaluator;
 import net.librec.recommender.Recommender;
 import net.librec.recommender.RecommenderContext;
-import net.librec.recommender.cf.ItemKNNRecommender;
 import net.librec.recommender.cf.rating.SVDPlusPlusRecommender;
 import net.librec.similarity.PCCSimilarity;
 import net.librec.similarity.RecommenderSimilarity;

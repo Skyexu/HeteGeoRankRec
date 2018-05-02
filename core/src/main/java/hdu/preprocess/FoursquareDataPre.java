@@ -13,7 +13,7 @@ import java.util.TimeZone;
 /**
  * @Author: Skye
  * @Date: 15:16 2018/4/17
- * @Description:
+ * @Description:  Foursquare 数据集预处理，文本格式切分转换
  */
 public class FoursquareDataPre {
 

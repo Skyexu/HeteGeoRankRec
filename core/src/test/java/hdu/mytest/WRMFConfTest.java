@@ -1,4 +1,4 @@
-package net.librec.mytest;
+package hdu.mytest;
 
 import net.librec.common.LibrecException;
 import net.librec.conf.Configuration;
@@ -8,12 +8,9 @@ import net.librec.eval.ranking.AveragePrecisionEvaluator;
 import net.librec.eval.ranking.NoveltyEvaluator;
 import net.librec.eval.ranking.PrecisionEvaluator;
 import net.librec.eval.ranking.RecallEvaluator;
-import net.librec.eval.rating.RMSEEvaluator;
 import net.librec.recommender.Recommender;
 import net.librec.recommender.RecommenderContext;
 import net.librec.recommender.cf.ranking.WRMFRecommender;
-import net.librec.similarity.PCCSimilarity;
-import net.librec.similarity.RecommenderSimilarity;
 
 /**
  * @Author: Skye

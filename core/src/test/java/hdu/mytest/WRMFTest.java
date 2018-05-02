@@ -1,4 +1,4 @@
-package net.librec.mytest;
+package hdu.mytest;
 
 import net.librec.BaseTestCase;
 import net.librec.common.LibrecException;

@@ -1,4 +1,4 @@
-package net.librec.mytest;
+package hdu.mytest;
 
 import net.librec.conf.Configuration;
 import net.librec.data.model.TextDataModel;

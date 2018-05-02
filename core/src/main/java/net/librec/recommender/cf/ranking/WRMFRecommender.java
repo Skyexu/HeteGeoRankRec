@@ -40,16 +40,19 @@ import java.util.List;
 public class WRMFRecommender extends MatrixFactorizationRecommender {
     /**
      * confidence weight coefficient
+     * 置信度权重系数
      */
     protected float weightCoefficient;
 
     /**
      * confindence Minus Identity Matrix{ui} = confidenceMatrix_{ui} - 1 =alpha * r_{ui} or log(1+10^alpha * r_{ui})
+     * 置信度矩阵 - 单位阵
      */
     protected SparseMatrix confindenceMinusIdentityMatrix;
 
     /**
      * preferenceMatrix_{ui} = 1 if {@code r_{ui}>0 or preferenceMatrix_{ui} = 0}
+     * 偏好矩阵  1 or 0
      */
     protected SparseMatrix preferenceMatrix;
 
@@ -71,30 +74,34 @@ public class WRMFRecommender extends MatrixFactorizationRecommender {
 
     @Override
     protected void trainModel() throws LibrecException {
+        // 以稀疏矩阵存储训练数据，稠密矩阵存储分解后的矩阵
 
+        // 用户、物品对角矩阵，值为正则化参数
         SparseMatrix userIdentityMatrix = DiagMatrix.eye(numFactors).scale(regUser);
         SparseMatrix itemIdentityMatrix = DiagMatrix.eye(numFactors).scale(regItem);
 
         // To be consistent with the symbols in the paper
+        // 用户和物品隐因子矩阵被初始化为标准高斯分布的值 （小的初始值可以更容易地训练模型; 否则可能需要一个非常小的学习速度（特别是在因素数量很大时），这可能导致性能不佳。）
         DenseMatrix X = userFactors, Y = itemFactors;
-        // Updating by using alternative least square (ALS)
-        // due to large amount of entries to be processed (SGD will be too slow)
+        // Updating by using alternative least square (ALS)    最小二乘更新参数
+        // due to large amount of entries to be processed (SGD will be too slow)   由于要处理大量条目，SGD 会很慢
+        // 迭代次数
         for (int iter = 1; iter <= numIterations; iter++) {
-            // Step 1: update user factors;
+            // Step 1: update user factors; 1. 更新用户隐向量
             DenseMatrix Yt = Y.transpose();
             DenseMatrix YtY = Yt.mult(Y);
             for (int userIdx = 0; userIdx < numUsers; userIdx++) {
 
                 DenseMatrix YtCuI = new DenseMatrix(numFactors, numItems);//actually YtCuI is a sparse matrix
                 //Yt * (Cu-itemIdx)
-                List<Integer> itemList = trainMatrix.getColumns(userIdx);
+                List<Integer> itemList = trainMatrix.getColumns(userIdx);   // 获取 userIdx 对应的 items
                 for (int itemIdx : itemList) {
                     for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
                         YtCuI.set(factorIdx, itemIdx, Y.get(itemIdx, factorIdx) * confindenceMinusIdentityMatrix.get(userIdx, itemIdx));
                     }
                 }
 
-                // YtY + Yt * (Cu - itemIdx) * Y
+                // YtY + Yt * (Cu - itemIdx) * Y   // 论文中的方法，通过计算此式来加快计算 YtCuY
                 DenseMatrix YtCuY = new DenseMatrix(numFactors, numFactors);
                 for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
                     for (int factorIdxIn = 0; factorIdxIn < numFactors; factorIdxIn++) {
@@ -118,7 +125,7 @@ public class WRMFRecommender extends MatrixFactorizationRecommender {
                 }
 
                 DenseVector xu = Wu.mult(YtCuPu);
-                // udpate user factors
+                // udpate user factors    更新用户向量
                 X.setRow(userIdx, xu);
             }
 
