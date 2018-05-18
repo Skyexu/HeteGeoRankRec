@@ -1,4 +1,4 @@
-package hdu.mytest;
+package hdu.myalgorithmtest;
 
 import net.librec.common.LibrecException;
 import net.librec.conf.Configuration;

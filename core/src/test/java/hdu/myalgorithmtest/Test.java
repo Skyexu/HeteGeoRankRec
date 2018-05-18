@@ -1,4 +1,4 @@
-package hdu.mytest;
+package hdu.myalgorithmtest;
 
 import net.librec.conf.Configuration;
 import net.librec.data.model.TextDataModel;
