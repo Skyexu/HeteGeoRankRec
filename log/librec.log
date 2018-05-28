@@ -211,3 +211,220 @@ Evaluator value:NDCG top 10 is 0.5753609458360556
 Evaluator value:Entropy top 10 is 24.249124296947112
 Evaluator value:PRECISION top 10 is 0.3456985003946344
 Result path is ../result/filmtrust/rating-wrmf-output/wrmf
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+FISMaucRecommender iter 1: loss = 2350862.222525286, delta_loss = -2350862.2
+FISMaucRecommender iter 2: loss = 2173254.4890639507, delta_loss = 177607.73
+FISMaucRecommender iter 3: loss = 2022634.620305618, delta_loss = 150619.88
+FISMaucRecommender iter 4: loss = 1888554.3198345457, delta_loss = 134080.3
+FISMaucRecommender iter 5: loss = 1774866.996592405, delta_loss = 113687.32
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 10 is 0.6082224803497397
+Evaluator value:Entropy top 10 is 16.08687352955666
+Evaluator value:AUC top 10 is 0.9212938164759601
+Evaluator value:NDCG top 10 is 0.5327943258696286
+Evaluator value:PRECISION top 10 is 0.341278610891872
+Evaluator value:RR top 10 is 0.5865868631062011
+Evaluator value:AP top 10 is 0.43704066594043806
+Evaluator value:Novelty top 10 is 11.569415301996916
+Result path is ../result/filmtrust/rating-fismauc-output/fismauc
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Transform data to Feature successfully!
+Job Setup completed.
+SocialMFRecommender iter 1: loss = 1331.2675680392201, delta_loss = -1331.2676
+SocialMFRecommender iter 2: loss = 1245.8894497966648, delta_loss = 85.37812
+SocialMFRecommender iter 3: loss = 1187.5834288855922, delta_loss = 58.306023
+SocialMFRecommender iter 4: loss = 1146.9831581397661, delta_loss = 40.60027
+SocialMFRecommender iter 5: loss = 1116.3006121711053, delta_loss = 30.682547
+SocialMFRecommender iter 6: loss = 1091.2211128125182, delta_loss = 25.0795
+SocialMFRecommender iter 7: loss = 1069.7863286513686, delta_loss = 21.434784
+SocialMFRecommender iter 8: loss = 1050.917976542136, delta_loss = 18.868353
+SocialMFRecommender iter 9: loss = 1033.9590435991233, delta_loss = 16.958933
+SocialMFRecommender iter 10: loss = 1018.4992403076105, delta_loss = 15.459804
+SocialMFRecommender iter 11: loss = 1004.2751238190322, delta_loss = 14.224116
+SocialMFRecommender iter 12: loss = 991.1082635446108, delta_loss = 13.166861
+SocialMFRecommender iter 13: loss = 978.8694624506469, delta_loss = 12.238801
+SocialMFRecommender iter 14: loss = 967.4591424291406, delta_loss = 11.41032
+SocialMFRecommender iter 15: loss = 956.7966308206137, delta_loss = 10.662512
+SocialMFRecommender iter 16: loss = 946.8141133557579, delta_loss = 9.982517
+SocialMFRecommender iter 17: loss = 937.4530576953435, delta_loss = 9.361055
+SocialMFRecommender iter 18: loss = 928.661998552384, delta_loss = 8.7910595
+SocialMFRecommender iter 19: loss = 920.3951073331232, delta_loss = 8.2668915
+SocialMFRecommender iter 20: loss = 912.6112293988765, delta_loss = 7.783878
+SocialMFRecommender iter 21: loss = 905.2732056851279, delta_loss = 7.3380237
+SocialMFRecommender iter 22: loss = 898.3473690703772, delta_loss = 6.9258366
+SocialMFRecommender iter 23: loss = 891.8031492156305, delta_loss = 6.54422
+SocialMFRecommender iter 24: loss = 885.6127461600332, delta_loss = 6.190403
+SocialMFRecommender iter 25: loss = 879.7508494359802, delta_loss = 5.8618965
+SocialMFRecommender iter 26: loss = 874.1943895333841, delta_loss = 5.55646
+SocialMFRecommender iter 27: loss = 868.9223144757854, delta_loss = 5.272075
+SocialMFRecommender iter 28: loss = 863.91538757666, delta_loss = 5.006927
+SocialMFRecommender iter 29: loss = 859.1560041491592, delta_loss = 4.759383
+SocialMFRecommender iter 30: loss = 854.6280257250062, delta_loss = 4.5279784
+SocialMFRecommender iter 31: loss = 850.3166306313872, delta_loss = 4.311395
+SocialMFRecommender iter 32: loss = 846.2081798392898, delta_loss = 4.108451
+SocialMFRecommender iter 33: loss = 842.2900969755705, delta_loss = 3.918083
+SocialMFRecommender iter 34: loss = 838.5507613613727, delta_loss = 3.7393355
+SocialMFRecommender iter 35: loss = 834.9794129265305, delta_loss = 3.5713484
+SocialMFRecommender iter 36: loss = 831.5660678672815, delta_loss = 3.413345
+SocialMFRecommender iter 37: loss = 828.3014439577988, delta_loss = 3.2646239
+SocialMFRecommender iter 38: loss = 825.1768944858522, delta_loss = 3.1245494
+SocialMFRecommender iter 39: loss = 822.1843498586888, delta_loss = 2.9925447
+SocialMFRecommender iter 40: loss = 819.3162660025213, delta_loss = 2.868084
+SocialMFRecommender iter 41: loss = 816.5655787598545, delta_loss = 2.7506874
+SocialMFRecommender iter 42: loss = 813.9256635659748, delta_loss = 2.6399152
+SocialMFRecommender iter 43: loss = 811.3902997595998, delta_loss = 2.535364
+SocialMFRecommender iter 44: loss = 808.953638949974, delta_loss = 2.4366608
+SocialMFRecommender iter 45: loss = 806.6101769262993, delta_loss = 2.343462
+SocialMFRecommender iter 46: loss = 804.3547286514925, delta_loss = 2.2554483
+SocialMFRecommender iter 47: loss = 802.1824059349353, delta_loss = 2.1723228
+SocialMFRecommender iter 48: loss = 800.0885974265616, delta_loss = 2.0938084
+SocialMFRecommender iter 49: loss = 798.0689506176658, delta_loss = 2.019647
+SocialMFRecommender iter 50: loss = 796.1193555738197, delta_loss = 1.9495951
+SocialMFRecommender iter 51: loss = 794.2359301606823, delta_loss = 1.8834254
+SocialMFRecommender iter 52: loss = 792.4150065569718, delta_loss = 1.8209236
+SocialMFRecommender iter 53: loss = 790.6531188775672, delta_loss = 1.7618877
+SocialMFRecommender iter 54: loss = 788.9469917565077, delta_loss = 1.7061272
+SocialMFRecommender iter 55: loss = 787.2935297630144, delta_loss = 1.653462
+SocialMFRecommender iter 56: loss = 785.6898075438629, delta_loss = 1.6037222
+SocialMFRecommender iter 57: loss = 784.1330606040327, delta_loss = 1.556747
+SocialMFRecommender iter 58: loss = 782.6206766520551, delta_loss = 1.5123839
+SocialMFRecommender iter 59: loss = 781.1501874496699, delta_loss = 1.4704891
+SocialMFRecommender iter 60: loss = 779.7192611170091, delta_loss = 1.4309263
+SocialMFRecommender iter 61: loss = 778.3256948522173, delta_loss = 1.3935663
+SocialMFRecommender iter 62: loss = 776.9674080327038, delta_loss = 1.3582869
+SocialMFRecommender iter 63: loss = 775.6424356707045, delta_loss = 1.3249724
+SocialMFRecommender iter 64: loss = 774.3489222001557, delta_loss = 1.2935134
+SocialMFRecommender iter 65: loss = 773.0851155762371, delta_loss = 1.2638066
+SocialMFRecommender iter 66: loss = 771.8493616706123, delta_loss = 1.2357539
+SocialMFRecommender iter 67: loss = 770.6400989487252, delta_loss = 1.2092627
+SocialMFRecommender iter 68: loss = 769.4558534158381, delta_loss = 1.1842456
+SocialMFRecommender iter 69: loss = 768.2952338206228, delta_loss = 1.1606196
+SocialMFRecommender iter 70: loss = 767.1569271050997, delta_loss = 1.1383067
+SocialMFRecommender iter 71: loss = 766.0396940911203, delta_loss = 1.117233
+SocialMFRecommender iter 72: loss = 764.9423653933414, delta_loss = 1.0973287
+SocialMFRecommender iter 73: loss = 763.8638375491464, delta_loss = 1.0785278
+SocialMFRecommender iter 74: loss = 762.8030693565992, delta_loss = 1.0607682
+SocialMFRecommender iter 75: loss = 761.7590784108938, delta_loss = 1.043991
+SocialMFRecommender iter 76: loss = 760.730937830991, delta_loss = 1.0281405
+SocialMFRecommender iter 77: loss = 759.717773166968, delta_loss = 1.0131646
+SocialMFRecommender iter 78: loss = 758.7187594804075, delta_loss = 0.99901366
+SocialMFRecommender iter 79: loss = 757.7331185885038, delta_loss = 0.9856409
+SocialMFRecommender iter 80: loss = 756.7601164644692, delta_loss = 0.97300214
+SocialMFRecommender iter 81: loss = 755.7990607858017, delta_loss = 0.9610557
+SocialMFRecommender iter 82: loss = 754.8492986227692, delta_loss = 0.94976217
+SocialMFRecommender iter 83: loss = 753.9102142594426, delta_loss = 0.93908435
+SocialMFRecommender iter 84: loss = 752.9812271403241, delta_loss = 0.92898715
+SocialMFRecommender iter 85: loss = 752.0617899351798, delta_loss = 0.9194372
+SocialMFRecommender iter 86: loss = 751.1513867152075, delta_loss = 0.9104032
+SocialMFRecommender iter 87: loss = 750.2495312348717, delta_loss = 0.90185547
+SocialMFRecommender iter 88: loss = 749.3557653119514, delta_loss = 0.8937659
+SocialMFRecommender iter 89: loss = 748.4696573009393, delta_loss = 0.88610804
+SocialMFRecommender iter 90: loss = 747.5908006535878, delta_loss = 0.87885666
+SocialMFRecommender iter 91: loss = 746.7188125613493, delta_loss = 0.8719881
+SocialMFRecommender iter 92: loss = 745.8533326749338, delta_loss = 0.8654799
+SocialMFRecommender iter 93: loss = 744.9940218955387, delta_loss = 0.8593108
+SocialMFRecommender iter 94: loss = 744.1405612339867, delta_loss = 0.85346067
+SocialMFRecommender iter 95: loss = 743.2926507329213, delta_loss = 0.8479105
+SocialMFRecommender iter 96: loss = 742.4500084485837, delta_loss = 0.8426423
+SocialMFRecommender iter 97: loss = 741.612369487752, delta_loss = 0.837639
+SocialMFRecommender iter 98: loss = 740.7794850972625, delta_loss = 0.8328844
+SocialMFRecommender iter 99: loss = 739.9511218019334, delta_loss = 0.8283633
+SocialMFRecommender iter 100: loss = 739.1270605886141, delta_loss = 0.8240612
+Job Train completed.
+Job End.
+Evaluator value:MSE is 0.6708377366514289
+Evaluator value:RMSE is 0.8190468464327476
+Evaluator value:MAE is 0.6377885622447891
+Evaluator value:MPE is 0.9911092294665538
+Result path is ../result/filmtrust/rating-socialmf-output/socialmf
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Transform data to Feature successfully!
+Job Setup completed.
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+SocialMFRecommender iter 1: loss = 1331.2675680392201, delta_loss = -1331.2676
+SocialMFRecommender iter 2: loss = 1245.8894497966648, delta_loss = 85.37812
+SocialMFRecommender iter 3: loss = 1187.5834288855922, delta_loss = 58.306023
+SocialMFRecommender iter 4: loss = 1146.9831581397661, delta_loss = 40.60027
+SocialMFRecommender iter 5: loss = 1116.3006121711053, delta_loss = 30.682547
+SocialMFRecommender iter 6: loss = 1091.2211128125182, delta_loss = 25.0795
+SocialMFRecommender iter 7: loss = 1069.7863286513686, delta_loss = 21.434784
+SocialMFRecommender iter 8: loss = 1050.917976542136, delta_loss = 18.868353
+SocialMFRecommender iter 9: loss = 1033.9590435991233, delta_loss = 16.958933
+SocialMFRecommender iter 10: loss = 1018.4992403076105, delta_loss = 15.459804
+SocialMFRecommender iter 11: loss = 1004.2751238190322, delta_loss = 14.224116
+SocialMFRecommender iter 12: loss = 991.1082635446108, delta_loss = 13.166861
+SocialMFRecommender iter 13: loss = 978.8694624506469, delta_loss = 12.238801
+SocialMFRecommender iter 14: loss = 967.4591424291406, delta_loss = 11.41032
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3

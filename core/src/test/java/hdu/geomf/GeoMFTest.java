@@ -1,4 +1,4 @@
-package hdu.myalgorithmtest;
+package hdu.geomf;
 
 import net.librec.common.LibrecException;
 import net.librec.conf.Configuration;
@@ -10,7 +10,6 @@ import net.librec.eval.ranking.PrecisionEvaluator;
 import net.librec.eval.ranking.RecallEvaluator;
 import net.librec.recommender.Recommender;
 import net.librec.recommender.RecommenderContext;
-import net.librec.recommender.cf.ranking.WRMFRecommender;
 import net.librec.recommender.item.RecommendedItem;
 import net.librec.util.FileUtil;
 import org.apache.commons.logging.Log;
@@ -23,11 +22,11 @@ import java.util.List;
 
 /**
  * @Author: Skye
- * @Date: 9:33 2018/4/18
+ * @Date: 3:03 2018/5/23
  * @Description:
  */
-public class FoursquareWRMF {
-    protected static final Log LOG = LogFactory.getLog(FoursquareWRMF.class);
+public class GeoMFTest {
+    protected static final Log LOG = LogFactory.getLog(GeoMFTest.class);
 
     public static void main(String[] args) throws LibrecException, IOException, ClassNotFoundException {
         LocalDateTime time = LocalDateTime.now();
@@ -37,12 +36,16 @@ public class FoursquareWRMF {
         // build data model
         Configuration conf = new Configuration();
         conf.set("dfs.data.dir", path);
-        conf.set("data.input.path","process/user_chekin_venue_count.txt");
         //conf.set("data.input.path","process/小数据量/user_chekin_venue_count.txt");
+        conf.set("data.input.path","process/user_chekin_venue_count.txt");
         conf.set("dfs.result.dir",path+"result");
 
 
         String outputPath  =  conf.get("dfs.result.dir") + "/" + "user_chekin_venue_count" + timeString;
+
+        conf.set("data.appender.class", "geo");
+        //conf.set("data.appender.path", "process/小数据量/venue_place_small.txt");
+        conf.set("data.appender.path", "process/venue_lat_lon.txt");
         TextDataModel dataModel = new TextDataModel(conf);
         dataModel.buildDataModel();
 
@@ -55,12 +58,17 @@ public class FoursquareWRMF {
         conf.set("rec.item.regularization", "0.01");
         conf.set("rec.factor.number", "10");
         conf.set("rec.recommender.isranking", "true");
-        conf.set("rec.recommender.ranking.topn", "5");
+        conf.set("rec.recommender.ranking.topn", "10");
         conf.set("rec.wrmf.weight.coefficient", "4.0");
         conf.set("data.model.splitter","ratio");
         conf.set("data.splitter.trainset.ratio","0.8");
 
-        Recommender recommender = new WRMFRecommender();
+        // set power-law parameter
+        conf.set("rec.geomf.powerlaw.a","3.52855505698074E-4");
+        conf.set("rec.geomf.powerlaw.b","-0.5152437346326175");
+        conf.set("rec.geomf.alpha","0.8");
+
+        Recommender recommender = new GeograpicalMFRecommender();
         recommender.setContext(context);
 
         // run recommender algorithm
@@ -90,6 +98,8 @@ public class FoursquareWRMF {
     public static void  saveResult(List<RecommendedItem> recommendedList,String outputPath) throws LibrecException, IOException, ClassNotFoundException {
         if (recommendedList != null && recommendedList.size() > 0) {
             // make output path
+
+
             // convert itemList to string
             StringBuilder sb = new StringBuilder();
             for (RecommendedItem recItem : recommendedList) {
