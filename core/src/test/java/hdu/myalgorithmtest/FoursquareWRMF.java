@@ -37,8 +37,8 @@ public class FoursquareWRMF {
         // build data model
         Configuration conf = new Configuration();
         conf.set("dfs.data.dir", path);
-        conf.set("data.input.path","process/user_chekin_venue_count.txt");
-        //conf.set("data.input.path","process/小数据量/user_chekin_venue_count.txt");
+        //conf.set("data.input.path","process/user_chekin_venue_count.txt");
+        conf.set("data.input.path","process/小数据量/user_chekin_venue_count.txt");
         conf.set("dfs.result.dir",path+"result");
 
 

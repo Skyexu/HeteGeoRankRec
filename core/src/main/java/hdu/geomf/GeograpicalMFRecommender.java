@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
     protected static final float zeroDistanceDefaultValue = 1f;
-    protected HashMap<String, double[]> poiLocation;
+    protected HashMap<Integer, double[]> poiLocation;
 
     /**
      * confidence weight coefficient
@@ -70,9 +70,6 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
 
     @Override
     protected void trainModel() throws LibrecException {
-        // 用于获取 item 对应的 poi location
-        //BiMap<Integer, String> userMappingInverse = userMappingData.inverse();
-        BiMap<Integer, String> itemMappingInverse = itemMappingData.inverse();
 
         // 以稀疏矩阵存储训练数据，稠密矩阵存储分解后的矩阵
         // 用户、物品对角矩阵，值为正则化参数
@@ -91,7 +88,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
             for (int userIdx = 0; userIdx < numUsers; userIdx++) {
                 // 创建 Y~
                 List<Integer> items = trainMatrix.getColumns(userIdx);   // 获取 userIdx 对应的 items
-                DenseMatrix Y_ = getY_(Y, items, itemMappingInverse);
+                DenseMatrix Y_ = getY_(Y, items);
 
                 // WRMF 原有公式，  更新用户隐向量部分公式相同
 //                DenseMatrix Yt = Y.transpose();
@@ -185,7 +182,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
                         continue;
                     }
                     for (int item : itemList) {
-                        double geoProb = getGeoProb(itemMappingInverse, itemIdx, item);
+                        double geoProb = getGeoProb(itemIdx, item);
                         Py.addEqual(Y.row(item).scaleEqual(geoProb));
                     }
                     double XtPy = X.row(userIdx).inner(Py) * ((1 - alpha) / itemList.size());
@@ -208,11 +205,9 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
     /**
      * @param Y
      * @param items
-     * @param itemMappingInverse
      * @return
-     * @TODO 时间耗时在 getGeoProb 的计算上
      */
-    protected DenseMatrix getY_(DenseMatrix Y, List<Integer> items, BiMap<Integer, String> itemMappingInverse) {
+    protected DenseMatrix getY_(DenseMatrix Y, List<Integer> items) {
         DenseMatrix Y_ = new DenseMatrix(numItems, numFactors);
 
         // 遍历每个 yi, 将每一个行向量更新至 Y_
@@ -220,7 +215,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
             // 公式右边求和部分
             DenseVector yi_right = new DenseVector(numFactors);
             for (int itemIdxu : items) {
-                double geoProb = getGeoProb(itemMappingInverse, itemIndex, itemIdxu);
+                double geoProb = getGeoProb(itemIndex, itemIdxu);
                 //double geoProb = 1;
                 yi_right.addEqual(Y.row(itemIdxu).scale(geoProb));
             }
@@ -247,7 +242,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
             DenseVector yi_right = new DenseVector(numFactors);
             for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
                 for (int itemIdxu : items) {
-                    double geoProb = getGeoProb(itemMappingInverse, itemIndex, itemIdxu);
+                    double geoProb = getGeoProb(itemIndex, itemIdxu);
                     //double geoProb = 1;
                     yi_right.add(factorIdx, Y.get(itemIdxu, factorIdx) * geoProb);
                 }
@@ -269,20 +264,17 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
     /**
      * 获取地理影响值
      *
-     * @param itemMappingInverse
      * @param itemIdx            当前地点
      * @param itemIdxu           用户访问过的一个地点
      * @return
      */
-    protected double getGeoProb(BiMap<Integer, String> itemMappingInverse, int itemIdx, int itemIdxu) {
+    protected double getGeoProb(int itemIdx, int itemIdxu) {
         double maxGeoProb = Utils.calPowerLawProb(powerA,
                 powerB, zeroDistanceDefaultValue,
                 zeroDistanceDefaultValue);
         // 获取当前 item 的 纬经度
-        String itemID = itemMappingInverse.get(itemIdx);
-        double[] location = poiLocation.get(itemID);
-        String itemIDu = itemMappingInverse.get(itemIdxu);
-        double[] locationu = poiLocation.get(itemIDu);
+        double[] location = poiLocation.get(itemIdx);
+        double[] locationu = poiLocation.get(itemIdxu);
         double distance = Utils.calDistance(
                 location[0], location[1],
                 locationu[0], locationu[1]);

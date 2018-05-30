@@ -20,8 +20,16 @@ public class GeoDataAppender extends Configured implements DataAppender {
     /** The path of the appender data file */
     private String inputDataPath;
     /** POI lat lon map */
-    private HashMap<String,double[]> poiLocation = new HashMap<>();
+    private HashMap<Integer,double[]> poiLocation = new HashMap<>();
+    /**
+     * user Mapping Data
+     */
+    public BiMap<String, Integer> userMappingData;
 
+    /**
+     * item Mapping Data
+     */
+    public BiMap<String, Integer> itemMappingData;
     public GeoDataAppender(){this(null);}
 
     public GeoDataAppender(Configuration conf) {
@@ -47,23 +55,26 @@ public class GeoDataAppender extends Configured implements DataAppender {
         String line = null;
         while ((line = br.readLine()) != null) {
             String[] data = line.split("\t");
-            if (data.length > 1)
-                poiLocation.put(data[0], new double[]{Double.parseDouble(data[1]),Double.parseDouble(data[2])});
+            if (data.length > 1){
+                int itemIndex = itemMappingData.get(data[0]);
+                poiLocation.put(itemIndex, new double[]{Double.parseDouble(data[1]),Double.parseDouble(data[2])});
+            }
+
         }
         br.close();
     }
 
-    public HashMap<String, double[]> getPoiLocation() {
+    public HashMap<Integer, double[]> getPoiLocation() {
         return poiLocation;
     }
 
     @Override
     public void setUserMappingData(BiMap<String, Integer> userMappingData) {
-
+        this.userMappingData = userMappingData;
     }
 
     @Override
     public void setItemMappingData(BiMap<String, Integer> itemMappingData) {
-
+        this.itemMappingData= itemMappingData;
     }
 }
