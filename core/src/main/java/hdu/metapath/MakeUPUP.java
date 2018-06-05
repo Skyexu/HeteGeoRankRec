@@ -65,10 +65,12 @@ public class MakeUPUP implements MakeMetaPath{
         // release memory of data table
         dataTable = null;
     }
-    public processPreferenceMatrix()
+    public void processPreferenceMatrix(){
+
+    }
     @Override
     public SparseMatrix getPreferenceMatrix() {
-        return null;
+        return this.preferenceMatrix;
     }
 
     public int numUsers() {
