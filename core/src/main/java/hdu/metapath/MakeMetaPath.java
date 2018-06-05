@@ -1,5 +1,6 @@
 package hdu.metapath;
 
+import net.librec.math.structure.DenseMatrix;
 import net.librec.math.structure.SparseMatrix;
 
 import java.io.IOException;
@@ -12,5 +13,5 @@ import java.io.IOException;
 public interface  MakeMetaPath {
 
     public void processData() throws IOException;
-    public SparseMatrix getPreferenceMatrix();
+    public DenseMatrix getPreferenceMatrix();
 }

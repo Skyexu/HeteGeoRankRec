@@ -2,8 +2,10 @@ package hdu.metapath;
 
 import com.google.common.collect.*;
 import hdu.util.FileUtil;
-import net.librec.data.convertor.TextDataConvertor;
+import net.librec.math.structure.DenseMatrix;
+import net.librec.math.structure.DenseVector;
 import net.librec.math.structure.SparseMatrix;
+import net.librec.math.structure.SparseVector;
 import net.librec.util.StringUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,15 +22,18 @@ public class MakeUPUP implements MakeMetaPath{
     private static final Log LOG = LogFactory.getLog(MakeUPUP.class);
 
     private BiMap<String, Integer> userIds, itemIds;
+    private int numUsers;
+    private int numItems;
     private SparseMatrix UPMatrix;
     private String inputDataPath;
-    private SparseMatrix preferenceMatrix;
+    private DenseMatrix preferenceMatrix;
     public MakeUPUP(String inputDataPath){
         this.inputDataPath = inputDataPath;
     }
     @Override
     public void processData() throws IOException{
         readData(inputDataPath);
+        processPreferenceMatrix();
     }
     private void readData(String inputDataPath) throws IOException {
         LOG.info(String.format("Dataset: %s", StringUtil.last(inputDataPath, 38)));
@@ -61,15 +66,35 @@ public class MakeUPUP implements MakeMetaPath{
         int numRows = numUsers(), numCols = numItems();
         // build counting matrix
         UPMatrix = new SparseMatrix(numRows, numCols, dataTable, colMap);
-
+        numUsers = numUsers();
+        numItems = numItems();
         // release memory of data table
         dataTable = null;
     }
-    public void processPreferenceMatrix(){
+    private void processPreferenceMatrix(){
+        DenseMatrix Wpu_Wput = new DenseMatrix(numUsers,numUsers);
+        for (int userIdx = 0; userIdx < numUsers; userIdx++) {
+            SparseVector userRow = UPMatrix.row(userIdx);
+            for (int userIdx2 = 0; userIdx2 < numUsers; userIdx2++) {
+                SparseVector userColumn = UPMatrix.row(userIdx2);
+                Integer value = (int)userRow.inner(userColumn);
+                Wpu_Wput.set(userIdx,userIdx2,value);
+            }
+        }
+        preferenceMatrix = new DenseMatrix(numUsers, numItems);
+        for (int userIdx = 0; userIdx < numUsers; userIdx++) {
+            DenseVector userRow = Wpu_Wput.row(userIdx);
+            for (int itemIndex = 0; itemIndex < numItems; itemIndex++) {
+                SparseVector itemColumn = UPMatrix.column(itemIndex);
+                Integer value = (int) userRow.inner(itemColumn);
+                preferenceMatrix.set(userIdx,itemIndex,value);
+            }
+        }
+
 
     }
     @Override
-    public SparseMatrix getPreferenceMatrix() {
+    public DenseMatrix getPreferenceMatrix() {
         return this.preferenceMatrix;
     }
 
