@@ -1,5 +1,7 @@
 package hdu.util;
 
+import com.google.common.collect.BiMap;
+import net.librec.math.structure.DenseMatrix;
 import org.apache.commons.math3.linear.BlockRealMatrix;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
@@ -2503,5 +2505,41 @@ public class Utils {
 			boolean newline) throws IOException {
 		write(writer, content, newline);
 		System.out.println(content);
+	}
+	public static boolean saveDenseMatrix(DenseMatrix matrix, BiMap<String, Integer> userIds, BiMap<String, Integer> itemIds, String outputFile){
+		BiMap<Integer, String> inverseUserIds = userIds.inverse();
+		BiMap<Integer, String> inverseItemIds = itemIds.inverse();
+		File file = new File(outputFile);
+		BufferedWriter writer = null;
+		try {
+			if (! file.getParentFile().exists())
+				file.getParentFile().mkdirs();
+			writer = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(file)));
+			if (matrix != null) {
+				String userId,itemId;
+				int data;
+				for (int i = 0; i < matrix.numRows(); i++) {
+					if (!inverseUserIds.containsKey(i))
+						continue;
+					userId = inverseUserIds.get(i);
+					for (int j = 0; j < matrix.numColumns(); j++) {
+						if (!inverseItemIds.containsKey(j))
+							continue;
+						itemId = inverseItemIds.get(j);
+						data = (int)matrix.get(i,j);
+						if (data > 0)
+							writer.write(userId + "\t" + itemId + "\t" + data +"\n");
+					}
+				}
+
+				return true;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			cleanup(writer);
+		}
+		return false;
 	}
 }
