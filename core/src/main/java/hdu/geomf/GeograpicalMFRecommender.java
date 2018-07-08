@@ -267,6 +267,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
      * @param itemIdx            当前地点
      * @param itemIdxu           用户访问过的一个地点
      * @return
+     * @TODO 检查正确与否
      */
     protected double getGeoProb(int itemIdx, int itemIdxu) {
         double maxGeoProb = Utils.calPowerLawProb(powerA,
@@ -278,6 +279,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
         double distance = Utils.calDistance(
                 location[0], location[1],
                 locationu[0], locationu[1]);
+        // 根据 ASMF 除了一个最大值（距离为1时概率最大），进行标准化
         return Utils.calPowerLawProb(
                 powerA, powerB,
                 zeroDistanceDefaultValue, distance) / maxGeoProb;

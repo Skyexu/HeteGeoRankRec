@@ -14,28 +14,32 @@ import java.io.IOException;
 
 /**
  * @Author: Skye
- * @Date: 21:12 2018/5/31
- * @Description:  计算元路径 U-P-U-P 的基于计数的相似度
- *
+ * @Date: 15:25 2018/7/7
+ * @Description:
  */
-public class MakeUPUP implements MakeMetaPath{
-    private static final Log LOG = LogFactory.getLog(MakeUPUP.class);
+public class MakeUUP implements MakeMetaPath{
+    private static final Log LOG = LogFactory.getLog(MakeUUP.class);
 
     private BiMap<String, Integer> userIds, itemIds;
     private int numUsers;
     private int numItems;
     private SparseMatrix UPMatrix;
-    private String inputDataPath;
+    private String upInputDataPath;
+    private String uuInputDataPath;
     private DenseMatrix preferenceMatrix;
-    public MakeUPUP(String inputDataPath){
-        this.inputDataPath = inputDataPath;
+    private DenseMatrix uuMatrix;
+
+    public MakeUUP(String upInputDataPath,String uuInputDataPath){
+        this.upInputDataPath = upInputDataPath;
+        this.uuInputDataPath = uuInputDataPath;
     }
     @Override
     public void processData() throws IOException{
-        readData(inputDataPath);
+        readUPData(upInputDataPath);
+        readUUData(uuInputDataPath);
         processPreferenceMatrix();
     }
-    private void readData(String inputDataPath) throws IOException {
+    private void readUPData(String inputDataPath) throws IOException {
         LOG.info(String.format("Dataset: %s", StringUtil.last(inputDataPath, 38)));
         // Table {row-id, col-id, count}
         Table<Integer, Integer, Integer> dataTable = HashBasedTable.create();
@@ -71,22 +75,39 @@ public class MakeUPUP implements MakeMetaPath{
         // release memory of data table
         dataTable = null;
     }
-    private void processPreferenceMatrix(){
-        DenseMatrix Wpu_Wput = new DenseMatrix(numUsers,numUsers);
-        for (int userIdx = 0; userIdx < numUsers; userIdx++) {
-            SparseVector userRow = UPMatrix.row(userIdx);
-            for (int userIdx2 = 0; userIdx2 < numUsers; userIdx2++) {
-                SparseVector userColumn = UPMatrix.row(userIdx2);
-                double value = userRow.inner(userColumn);
-                Wpu_Wput.set(userIdx,userIdx2,value);
+    private void readUUData(String uuInputDataPath) throws IOException {
+        LOG.info(String.format("user friend Dataset: %s", StringUtil.last(uuInputDataPath, 38)));
+        String[] content = FileUtil.read(uuInputDataPath,null);
+        int userIndex,friendIndex;
+        uuMatrix = new DenseMatrix(numUsers,numUsers);
+        for (int i = 0; i < content.length; i++) {
+            String line = content[i];
+            String[] data = line.trim().split("[ \t,]+");
+            String user = data[0];
+            String friend = data[1];
+            if (userIds.containsKey(user)){
+                userIndex = userIds.get(user);
+            }else {
+                continue;
             }
+
+            if (userIds.containsKey(friend)){
+                friendIndex = userIds.get(friend);
+            }else {
+                continue;
+            }
+
+            uuMatrix.set(userIndex,friendIndex,1.0);
         }
+    }
+    private void processPreferenceMatrix(){
+
         preferenceMatrix = new DenseMatrix(numUsers, numItems);
         for (int userIdx = 0; userIdx < numUsers; userIdx++) {
-            DenseVector userRow = Wpu_Wput.row(userIdx);
+            DenseVector userRow = uuMatrix.row(userIdx);
             for (int itemIndex = 0; itemIndex < numItems; itemIndex++) {
                 SparseVector itemColumn = UPMatrix.column(itemIndex);
-                double value = userRow.inner(itemColumn);
+                double value =  userRow.inner(itemColumn);
                 preferenceMatrix.set(userIdx,itemIndex,value);
             }
         }

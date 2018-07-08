@@ -14,28 +14,33 @@ import java.io.IOException;
 
 /**
  * @Author: Skye
- * @Date: 21:12 2018/5/31
- * @Description:  计算元路径 U-P-U-P 的基于计数的相似度
- *
+ * @Date: 18:01 2018/7/8
+ * @Description: 计算元路径 U-P-C-P 的基于计数的相似度
  */
-public class MakeUPUP implements MakeMetaPath{
-    private static final Log LOG = LogFactory.getLog(MakeUPUP.class);
+public class MakeUPCP implements MakeMetaPath{
+    private static final Log LOG = LogFactory.getLog(MakeUPCP.class);
 
-    private BiMap<String, Integer> userIds, itemIds;
+    private BiMap<String, Integer> userIds, itemIds,categoryIds;
     private int numUsers;
     private int numItems;
+    private int numCategories;
     private SparseMatrix UPMatrix;
-    private String inputDataPath;
+    private String upInputDataPath;
+    private String pcInputDataPath; // venue category file path
     private DenseMatrix preferenceMatrix;
-    public MakeUPUP(String inputDataPath){
-        this.inputDataPath = inputDataPath;
+    private SparseMatrix PCMatrix;
+
+    public MakeUPCP(String upInputDataPath,String pcInputDataPath){
+        this.upInputDataPath = upInputDataPath;
+        this.pcInputDataPath = pcInputDataPath;
     }
     @Override
     public void processData() throws IOException{
-        readData(inputDataPath);
+        readUPData(upInputDataPath);
+        readVCData(pcInputDataPath);
         processPreferenceMatrix();
     }
-    private void readData(String inputDataPath) throws IOException {
+    private void readUPData(String inputDataPath) throws IOException {
         LOG.info(String.format("Dataset: %s", StringUtil.last(inputDataPath, 38)));
         // Table {row-id, col-id, count}
         Table<Integer, Integer, Integer> dataTable = HashBasedTable.create();
@@ -71,22 +76,51 @@ public class MakeUPUP implements MakeMetaPath{
         // release memory of data table
         dataTable = null;
     }
+    private void readVCData(String vcInputDataPath) throws IOException {
+        LOG.info(String.format("venue category Dataset: %s", StringUtil.last(vcInputDataPath, 38)));
+        String[] content = FileUtil.read(vcInputDataPath,null);
+        Table<Integer, Integer, Integer> dataTable = HashBasedTable.create();
+        // Map {col-id, multiple row-id}: used to fast build a rating matrix
+        Multimap<Integer, Integer> colMap = HashMultimap.create();
+        categoryIds = HashBiMap.create();
+
+        for (int i = 0; i < content.length; i++) {
+            String line = content[i];
+            String[] data = line.trim().split("[ \t,]+");
+            String venue = data[0];
+            String category = data[1];
+            if (!itemIds.containsKey(venue))
+                continue;
+            int row = itemIds.get(venue);
+            int col = categoryIds.containsKey(category) ? categoryIds.get(category) : categoryIds.size();
+            categoryIds.put(category, col);
+
+            dataTable.put(row, col, 1);
+            colMap.put(col, row);
+        }
+        int numRows = numUsers(), numCols = numCategorys();
+        PCMatrix = new SparseMatrix(numRows, numCols, dataTable, colMap);
+        numCategories = numCols;
+        // release memory of data table
+        dataTable = null;
+    }
     private void processPreferenceMatrix(){
-        DenseMatrix Wpu_Wput = new DenseMatrix(numUsers,numUsers);
+
+        preferenceMatrix = new DenseMatrix(numUsers, numItems);
+        DenseMatrix upc = new DenseMatrix(numUsers,numCategories);
         for (int userIdx = 0; userIdx < numUsers; userIdx++) {
             SparseVector userRow = UPMatrix.row(userIdx);
-            for (int userIdx2 = 0; userIdx2 < numUsers; userIdx2++) {
-                SparseVector userColumn = UPMatrix.row(userIdx2);
-                double value = userRow.inner(userColumn);
-                Wpu_Wput.set(userIdx,userIdx2,value);
+            for (int cateIndex = 0; cateIndex < numCategories; cateIndex++) {
+                SparseVector cateColumn = PCMatrix.column(cateIndex);
+                double value =  userRow.inner(cateColumn);
+                upc.set(userIdx,cateIndex,value);
             }
         }
-        preferenceMatrix = new DenseMatrix(numUsers, numItems);
         for (int userIdx = 0; userIdx < numUsers; userIdx++) {
-            DenseVector userRow = Wpu_Wput.row(userIdx);
+            DenseVector userRow = upc.row(userIdx);
             for (int itemIndex = 0; itemIndex < numItems; itemIndex++) {
-                SparseVector itemColumn = UPMatrix.column(itemIndex);
-                double value = userRow.inner(itemColumn);
+                SparseVector venueColumn = PCMatrix.row(itemIndex);
+                double value =  userRow.inner(venueColumn);
                 preferenceMatrix.set(userIdx,itemIndex,value);
             }
         }
@@ -104,7 +138,9 @@ public class MakeUPUP implements MakeMetaPath{
     public int numItems() {
         return itemIds.size();
     }
-
+    public int numCategorys() {
+        return categoryIds.size();
+    }
     public BiMap<String, Integer> getUserIds() {
         return userIds;
     }

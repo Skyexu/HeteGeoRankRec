@@ -12,6 +12,6 @@ import java.io.IOException;
  */
 public interface  MakeMetaPath {
 
-    public void processData() throws IOException;
-    public DenseMatrix getPreferenceMatrix();
+    void processData() throws IOException;
+    DenseMatrix getPreferenceMatrix();
 }
