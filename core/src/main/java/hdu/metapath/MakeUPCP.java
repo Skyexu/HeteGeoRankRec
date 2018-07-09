@@ -86,7 +86,7 @@ public class MakeUPCP implements MakeMetaPath{
 
         for (int i = 0; i < content.length; i++) {
             String line = content[i];
-            String[] data = line.trim().split("[ \t,]+");
+            String[] data = line.trim().split("\t");
             String venue = data[0];
             String category = data[1];
             if (!itemIds.containsKey(venue))
@@ -98,7 +98,7 @@ public class MakeUPCP implements MakeMetaPath{
             dataTable.put(row, col, 1);
             colMap.put(col, row);
         }
-        int numRows = numUsers(), numCols = numCategorys();
+        int numRows = numItems(), numCols = numCategorys();
         PCMatrix = new SparseMatrix(numRows, numCols, dataTable, colMap);
         numCategories = numCols;
         // release memory of data table

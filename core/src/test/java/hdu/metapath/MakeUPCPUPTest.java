@@ -14,7 +14,7 @@ public class MakeUPCPUPTest {
     public static void main(String[] args) throws IOException {
         String path  = "D:\\Works\\论文\\dataSet\\experimentData\\Foursquare\\";
         String upFile = path + "process/小数据量/user_chekin_venue_count.txt";
-        String pcFile = path + "process/小数据量/venueId_categoryId.txt";
+        String pcFile = path + "process/小数据量/venueId_category_small.txt";
         MakeUPCPUP upcpupMaker = new MakeUPCPUP(upFile,pcFile);
         upcpupMaker.processData();
         DenseMatrix uupMatrix = upcpupMaker.getPreferenceMatrix();

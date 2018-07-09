@@ -98,7 +98,7 @@ public class MakeUPCPUP implements MakeMetaPath{
             dataTable.put(row, col, 1);
             colMap.put(col, row);
         }
-        int numRows = numUsers(), numCols = numCategorys();
+        int numRows = numItems(), numCols = numCategorys();
         PCMatrix = new SparseMatrix(numRows, numCols, dataTable, colMap);
         numCategories = numCols;
         // release memory of data table

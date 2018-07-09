@@ -15,14 +15,16 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * @Author: Skye
- * @Date: 2:35 2018/5/23
+ * @Date: 20:32 2018/7/9
  * @Description:
  */
-public class GeoAppenderTest extends BaseTestCase{
+public class GeoUPDataAppenderTest extends BaseTestCase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        conf.set("data.appender.class", "geo");
+        conf.set("data.appender.class", "geoup");
+        conf.set("dfs.data.dir","D:\\Works\\论文\\dataSet\\experimentData\\Foursquare\\process");
+        conf.set("data.input.path","小数据量\\metapath\\upcp.txt");
     }
 
     /**
@@ -36,9 +38,11 @@ public class GeoAppenderTest extends BaseTestCase{
         String inputPath = conf.get("dfs.data.dir") + "/" + conf.get("data.input.path");
         TextDataConvertor textDataConvertor = new TextDataConvertor(inputPath);
         textDataConvertor.processData();
-        conf.set("data.appender.path", "geo/venue_lat_lon.txt");
-        GeoDataAppender dataFeature = (GeoDataAppender) ReflectionUtil.newInstance(DriverClassUtil.getClass(conf.get("data.appender.class")), conf);
+        conf.set("data.appender.poilatlon", "小数据量\\venue_place_small.txt");
+        conf.set("data.appender.up", "小数据量\\user_chekin_venue_count.txt");
+        GeoUPDataAppender dataFeature = (GeoUPDataAppender) ReflectionUtil.newInstance(DriverClassUtil.getClass(conf.get("data.appender.class")), conf);
         dataFeature.setItemMappingData(textDataConvertor.getItemIds());
+        dataFeature.setUserMappingData(textDataConvertor.getUserIds());
         dataFeature.processData();
 
         assertTrue(dataFeature.getPoiLocation().size()>0);

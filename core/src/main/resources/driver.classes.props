@@ -9,6 +9,7 @@ arff=net.librec.data.model.ArffDataModel
 social=net.librec.data.convertor.appender.SocialDataAppender
 document=net.librec.data.convertor.appender.DocumentDataAppender
 geo=hdu.geomf.GeoDataAppender
+geoup=hdu.geomf.GeoUPDataAppender
 #DataSplitter(-splitter)
 ratio=net.librec.data.splitter.RatioDataSplitter
 givenn=net.librec.data.splitter.GivenNDataSplitter

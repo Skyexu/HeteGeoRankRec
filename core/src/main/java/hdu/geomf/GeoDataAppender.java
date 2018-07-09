@@ -14,7 +14,7 @@ import java.util.HashMap;
 /**
  * @Author: Skye
  * @Date: 1:50 2018/5/23
- * @Description:  precess and store geo appender data
+ * @Description:  process and store geo appender data (venue lat lon)
  */
 public class GeoDataAppender extends Configured implements DataAppender {
     /** The path of the appender data file */
