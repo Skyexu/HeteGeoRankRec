@@ -1,7 +1,9 @@
 package hdu.util;
 
 import com.google.common.collect.BiMap;
+import hdu.geomf.GeograpicalMetaPathMFRecommender;
 import net.librec.math.structure.DenseMatrix;
+import net.librec.recommender.Recommender;
 import org.apache.commons.math3.linear.BlockRealMatrix;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
@@ -2528,18 +2530,20 @@ public class Utils {
 							continue;
 						itemId = inverseItemIds.get(j);
 						data = (int)matrix.get(i,j);
-						if (data > 0)
+						//if (data > 0)
 							writer.write(userId + "\t" + itemId + "\t" + data +"\n");
 					}
 				}
 
-				return true;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		} finally {
 			cleanup(writer);
 		}
-		return false;
+		return true;
 	}
+
+
 }

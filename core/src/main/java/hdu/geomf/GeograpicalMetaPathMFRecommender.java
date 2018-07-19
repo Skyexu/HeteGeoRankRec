@@ -6,6 +6,8 @@ import net.librec.common.LibrecException;
 import net.librec.math.structure.*;
 import net.librec.recommender.MatrixFactorizationRecommender;
 
+import java.io.*;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -288,4 +290,36 @@ public class GeograpicalMetaPathMFRecommender extends MatrixFactorizationRecomme
                 powerA, powerB,
                 zeroDistanceDefaultValue, distance) / maxGeoProb;
     }
+
+
+    /**
+     * 保存所有预测结果到文件，每个用户对每个地点的偏好特征
+     */
+    protected boolean saveAllPredict(String outputFile) throws LibrecException {
+        BiMap<Integer, String> inverseUserIds = userMappingData.inverse();
+        BiMap<Integer, String> inverseItemIds = itemMappingData.inverse();
+        File file = new File(outputFile);
+        BufferedWriter writer = null;
+        DecimalFormat format = new DecimalFormat("#.##");
+        try {
+            if (!file.getParentFile().exists())
+                file.getParentFile().mkdirs();
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(file)));
+            for (int i = 0; i < numUsers; i++) {
+                for (int j = 0; j < numItems; j++) {
+                    double data =  predict(i,j);
+                    writer.write(inverseUserIds.get(i) + "\t" + inverseItemIds.get(j) + "\t" + format.format(data) + "\n");
+                }
+            }
+            writer.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        LOG.info("Result path is " + outputFile);
+        return true;
+
+    }
+
 }

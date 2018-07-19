@@ -1,5 +1,7 @@
 package hdu;
 
+import net.librec.math.algorithm.Maths;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -31,7 +33,7 @@ public class Test {
              splitStr) {
             System.out.println(s);
         }
-
-
+        System.out.println(Maths.logistic(-1691.6019396234522));
+        System.out.println(Math.exp(-1691.6019396234522) * Maths.logistic(-1691.6019396234522));
     }
 }

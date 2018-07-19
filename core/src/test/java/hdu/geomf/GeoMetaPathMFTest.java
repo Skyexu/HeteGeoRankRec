@@ -36,12 +36,12 @@ public class GeoMetaPathMFTest {
         // build data model
         Configuration conf = new Configuration();
         conf.set("dfs.data.dir", path);
-        conf.set("data.input.path","process/小数据量/metapath/user_chekin_venue_count.txt");
+        conf.set("data.input.path","process/小数据量/metapath/upcp.txt");
         //conf.set("data.input.path","process/user_chekin_venue_count.txt");
         conf.set("dfs.result.dir",path+"result");
 
 
-        String outputPath  =  conf.get("dfs.result.dir") + "/" + "user_chekin_venue_count" + timeString;
+        String outputPath  =  conf.get("dfs.result.dir") + "/" + "upup" + timeString;
 
         conf.set("data.appender.class", "geoup");
         conf.set("data.appender.poilatlon", "process\\小数据量\\venue_place_small.txt");
@@ -94,7 +94,11 @@ public class GeoMetaPathMFTest {
 
         List<RecommendedItem> recommendedList = recommender.getRecommendedList();
 
+        // 输出推荐结果
         saveResult(recommendedList,outputPath);
+        // 输出所有用户对所有地点的评分
+        String allResultOutputPath = conf.get("dfs.result.dir") + "/" + "metapath_feature_result/"+ "upcp" + timeString;
+        ((GeograpicalMetaPathMFRecommender)recommender).saveAllPredict(allResultOutputPath);
     }
 
     public static void  saveResult(List<RecommendedItem> recommendedList,String outputPath) throws LibrecException, IOException, ClassNotFoundException {
