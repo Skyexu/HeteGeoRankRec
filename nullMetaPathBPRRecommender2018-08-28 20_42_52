@@ -1,0 +1,9 @@
+rec.iterator.maximum: 20
+rec.metapathbpr.regularization: 0.01
+rec.recommender.isranking: true
+rec.recommender.ranking.topn: 10
+PRECISION:0.044858420268256455
+RECALL:0.09488593360692277
+AP:0.04612931431335024
+AUC:0.6806202342927452
+Novelty:39.582412432043604

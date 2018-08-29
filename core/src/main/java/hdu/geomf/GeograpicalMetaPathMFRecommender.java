@@ -8,6 +8,7 @@ import net.librec.recommender.MatrixFactorizationRecommender;
 
 import java.io.*;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +56,8 @@ public class GeograpicalMetaPathMFRecommender extends MatrixFactorizationRecomme
     @Override
     protected void setup() throws LibrecException {
         super.setup();
+        System.out.println(numUsers + "-" + numItems);
+        // trainMatrix.reshape(numUsers,numItems);
         poiLocation = ((GeoUPDataAppender) getDataModel().getDataAppender()).getPoiLocation();
         upTrainMatrix = ((GeoUPDataAppender) getDataModel().getDataAppender()).getUpTrainMatrix();
         userMappingData = getDataModel().getUserMappingData();
@@ -89,119 +92,144 @@ public class GeograpicalMetaPathMFRecommender extends MatrixFactorizationRecomme
         // due to large amount of entries to be processed (SGD will be too slow)   由于要处理大量条目，SGD 会很慢
         // 迭代次数
 
+        // 构建列表用于stream并行迭代
+        List<Integer> usersList = new ArrayList<>(numUsers);
+        List<Integer> itemsList = new ArrayList<>(numItems);
+        for (int userIndex = 0; userIndex < numUsers; userIndex++) {
+            usersList.add(userIndex);
+        }
+
+        for (int itemIndex = 0; itemIndex < numItems; itemIndex++) {
+            itemsList.add(itemIndex);
+        }
+
         for (int iter = 1; iter <= numIterations; iter++) {
             // Step 1: update user factors; 1. 更新用户隐向量
-            for (int userIdx = 0; userIdx < numUsers; userIdx++) {
-                // 创建 Y~
-                List<Integer> items = upTrainMatrix.getColumns(userIdx);   // 获取 userIdx 对应真实已签到的 poi
-                DenseMatrix Y_ = getY_(Y, items);
+            usersList.parallelStream().forEach(userIdx -> {
+                try {
+                    //for (int userIdx = 0; userIdx < numUsers; userIdx++) {
+                    // 创建 Y~
+                    List<Integer> items = upTrainMatrix.getColumns(userIdx);   // 获取 userIdx 对应真实已签到的 poi
+                    DenseMatrix Y_ = getY_(Y, items);
 
-                // WRMF 原有公式，  更新用户隐向量部分公式相同
+                    // WRMF 原有公式，  更新用户隐向量部分公式相同
 //                DenseMatrix Yt = Y.transpose();
 //                DenseMatrix YtY = Yt.mult(Y);
-                DenseMatrix Yt = Y_.transpose();
-                DenseMatrix YtY = Yt.mult(Y_);
+                    DenseMatrix Yt = Y_.transpose();
+                    DenseMatrix YtY = null;
+                    YtY = Yt.mult(Y_);
 
-                DenseMatrix YtCuI = new DenseMatrix(numFactors, numItems);//actually YtCuI is a sparse matrix
-                //Yt * (Cu-itemIdx)
-                List<Integer> itemList = trainMatrix.getColumns(userIdx);   // 获取 userIdx 对应的 items
-                for (int itemIdx : itemList) {
-                    for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
-                        YtCuI.set(factorIdx, itemIdx, Y_.get(itemIdx, factorIdx) * confindenceMinusIdentityMatrix.get(userIdx, itemIdx));
-                    }
-                }
-
-                // YtY + Yt * (Cu - itemIdx) * Y   // 论文中的方法，通过计算此式来加快计算 YtCuY
-                DenseMatrix YtCuY = new DenseMatrix(numFactors, numFactors);
-                for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
-                    for (int factorIdxIn = 0; factorIdxIn < numFactors; factorIdxIn++) {
-                        double value = 0.0;
-                        for (int itemIdx : itemList) {
-                            value += YtCuI.get(factorIdx, itemIdx) * Y_.get(itemIdx, factorIdxIn);
-                        }
-                        YtCuY.set(factorIdx, factorIdxIn, value);
-                    }
-                }
-                YtCuY.addEqual(YtY);
-                // (YtCuY + lambda * itemIdx)^-1
-                //lambda * itemIdx can be pre-difined because every time is the same.
-                DenseMatrix Wu = (YtCuY.add(userIdentityMatrix)).inv();
-                // Yt * (Cu - itemIdx) * Pu + Yt * Pu
-                DenseVector YtCuPu = new DenseVector(numFactors);
-                for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                    DenseMatrix YtCuI = new DenseMatrix(numFactors, numItems);//actually YtCuI is a sparse matrix
+                    //Yt * (Cu-itemIdx)
+                    List<Integer> itemList = trainMatrix.getColumns(userIdx);   // 获取 userIdx 对应的 items
                     for (int itemIdx : itemList) {
-                        YtCuPu.add(factorIdx, preferenceMatrix.get(userIdx, itemIdx) * (YtCuI.get(factorIdx, itemIdx) + Yt.get(factorIdx, itemIdx)));
+                        for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                            YtCuI.set(factorIdx, itemIdx, Y_.get(itemIdx, factorIdx) * confindenceMinusIdentityMatrix.get(userIdx, itemIdx));
+                        }
                     }
-                }
 
-                DenseVector xu = Wu.mult(YtCuPu);
-                // udpate user factors    更新用户向量
-                X.setRow(userIdx, xu);
-                //System.out.println("now update:" + userIdx);
-            }
+                    // YtY + Yt * (Cu - itemIdx) * Y   // 论文中的方法，通过计算此式来加快计算 YtCuY
+                    DenseMatrix YtCuY = new DenseMatrix(numFactors, numFactors);
+                    for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                        for (int factorIdxIn = 0; factorIdxIn < numFactors; factorIdxIn++) {
+                            double value = 0.0;
+                            for (int itemIdx : itemList) {
+                                value += YtCuI.get(factorIdx, itemIdx) * Y_.get(itemIdx, factorIdxIn);
+                            }
+                            YtCuY.set(factorIdx, factorIdxIn, value);
+                        }
+                    }
+                    YtCuY.addEqual(YtY);
+                    // (YtCuY + lambda * itemIdx)^-1
+                    //lambda * itemIdx can be pre-difined because every time is the same.
+                    DenseMatrix Wu = (YtCuY.add(userIdentityMatrix)).inv();
+                    // Yt * (Cu - itemIdx) * Pu + Yt * Pu
+                    DenseVector YtCuPu = new DenseVector(numFactors);
+                    for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                        for (int itemIdx : itemList) {
+                            YtCuPu.add(factorIdx, preferenceMatrix.get(userIdx, itemIdx) * (YtCuI.get(factorIdx, itemIdx) + Yt.get(factorIdx, itemIdx)));
+                        }
+                    }
+
+                    DenseVector xu = Wu.mult(YtCuPu);
+                    // udpate user factors    更新用户向量
+                    X.setRow(userIdx, xu);
+                    //System.out.println("now update:" + userIdx);
+
+                    Y_ = null;
+                    // }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
 
             // Step 2: update item factors;
             DenseMatrix Xt = X.transpose();
             DenseMatrix XtX = Xt.mult(X);
 
-            for (int itemIdx = 0; itemIdx < numItems; itemIdx++) {
+            itemsList.parallelStream().forEach(itemIdx -> {
+                try {
+                    //for (int itemIdx = 0; itemIdx < numItems; itemIdx++) {
 
-                DenseMatrix XtCiI = new DenseMatrix(numFactors, numUsers);
-                //actually XtCiI is a sparse matrix
-                //Xt * (Ci-itemIdx)
-                List<Integer> userList = trainMatrix.getRows(itemIdx);
-                for (int userIdx : userList) {
-                    for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
-                        XtCiI.set(factorIdx, userIdx, X.get(userIdx, factorIdx) * confindenceMinusIdentityMatrix.get(userIdx, itemIdx));
-                    }
-                }
-
-                // XtX + Xt * (Ci - itemIdx) * X
-                DenseMatrix XtCiX = new DenseMatrix(numFactors, numFactors);
-                for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
-                    for (int factorIdxIn = 0; factorIdxIn < numFactors; factorIdxIn++) {
-                        double value = 0.0;
-                        for (int userIdx : userList) {
-                            value += XtCiI.get(factorIdx, userIdx) * X.get(userIdx, factorIdxIn);
-                        }
-                        XtCiX.set(factorIdx, factorIdxIn, value);
-                    }
-                }
-                XtCiX.addEqual(XtX);
-
-                // (XtCuX*alpha*alpha + lambda * itemIdx)^-1
-                //lambda * itemIdx can be pre-difined because every time is the same.
-                DenseMatrix Wi = (XtCiX.scale(alpha * alpha).add(itemIdentityMatrix)).inv();
-                // Xt * (Ci - itemIdx) * Pu + Xt * Pu
-                DenseVector XtCiPu = new DenseVector(numFactors);
-                for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                    DenseMatrix XtCiI = new DenseMatrix(numFactors, numUsers);
+                    //actually XtCiI is a sparse matrix
+                    //Xt * (Ci-itemIdx)
+                    List<Integer> userList = trainMatrix.getRows(itemIdx);
                     for (int userIdx : userList) {
-                        XtCiPu.add(factorIdx, preferenceMatrix.get(userIdx, itemIdx) * (XtCiI.get(factorIdx, userIdx) + Xt.get(factorIdx, userIdx)));
+                        for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                            XtCiI.set(factorIdx, userIdx, X.get(userIdx, factorIdx) * confindenceMinusIdentityMatrix.get(userIdx, itemIdx));
+                        }
                     }
-                }
-                // plus right  XtCuX + 右边部分
-                DenseVector rightVec = new DenseVector(numFactors);
-                for (int userIdx : userList) {
-                    DenseVector Py = new DenseVector(numFactors);
-                    List<Integer> itemList = upTrainMatrix.getColumns(userIdx);   // 获取 userIdx 对应的真实签到的 pois
-                    if (itemList.size() == 0) {
-                        continue;
-                    }
-                    for (int item : itemList) {
-                        double geoProb = getGeoProb(itemIdx, item);
-                        Py.addEqual(Y.row(item).scaleEqual(geoProb));
-                    }
-                    double XtPy = X.row(userIdx).inner(Py) * ((1 - alpha) / itemList.size());
-                    DenseVector XtPyX = X.row(userIdx).scaleEqual(XtPy);
-                    DenseVector CuiXtPyX = XtPyX.add(XtPyX.scale(confindenceMinusIdentityMatrix.get(userIdx, itemIdx)));
-                    rightVec.addEqual(CuiXtPyX);
-                }
-                // 相乘
-                DenseVector yi = Wi.mult(XtCiPu.addEqual(rightVec).scale(alpha));
-                // udpate item factors
-                Y.setRow(itemIdx, yi);
-            }
 
+                    // XtX + Xt * (Ci - itemIdx) * X
+                    DenseMatrix XtCiX = new DenseMatrix(numFactors, numFactors);
+                    for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                        for (int factorIdxIn = 0; factorIdxIn < numFactors; factorIdxIn++) {
+                            double value = 0.0;
+                            for (int userIdx : userList) {
+                                value += XtCiI.get(factorIdx, userIdx) * X.get(userIdx, factorIdxIn);
+                            }
+                            XtCiX.set(factorIdx, factorIdxIn, value);
+                        }
+                    }
+                    XtCiX.addEqual(XtX);
+
+                    // (XtCuX*alpha*alpha + lambda * itemIdx)^-1
+                    //lambda * itemIdx can be pre-difined because every time is the same.
+                    DenseMatrix Wi = (XtCiX.scale(alpha * alpha).add(itemIdentityMatrix)).inv();
+                    // Xt * (Ci - itemIdx) * Pu + Xt * Pu
+                    DenseVector XtCiPu = new DenseVector(numFactors);
+                    for (int factorIdx = 0; factorIdx < numFactors; factorIdx++) {
+                        for (int userIdx : userList) {
+                            XtCiPu.add(factorIdx, preferenceMatrix.get(userIdx, itemIdx) * (XtCiI.get(factorIdx, userIdx) + Xt.get(factorIdx, userIdx)));
+                        }
+                    }
+                    // plus right  XtCuX + 右边部分
+                    DenseVector rightVec = new DenseVector(numFactors);
+                    for (int userIdx : userList) {
+                        DenseVector Py = new DenseVector(numFactors);
+                        List<Integer> itemList = upTrainMatrix.getColumns(userIdx);   // 获取 userIdx 对应的真实签到的 pois
+                        if (itemList.size() == 0) {
+                            continue;
+                        }
+                        for (int item : itemList) {
+                            double geoProb = getGeoProb(itemIdx, item);
+                            Py.addEqual(Y.row(item).scaleEqual(geoProb));
+                        }
+                        double XtPy = X.row(userIdx).inner(Py) * ((1 - alpha) / itemList.size());
+                        DenseVector XtPyX = X.row(userIdx).scaleEqual(XtPy);
+                        DenseVector CuiXtPyX = XtPyX.add(XtPyX.scale(confindenceMinusIdentityMatrix.get(userIdx, itemIdx)));
+                        rightVec.addEqual(CuiXtPyX);
+                    }
+                    // 相乘
+                    DenseVector yi = Wi.mult(XtCiPu.addEqual(rightVec).scale(alpha));
+                    // udpate item factors
+                    Y.setRow(itemIdx, yi);
+                    // }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
             if (verbose) {
                 LOG.info(getClass() + " runs at iteration = " + iter + " " + new Date());
             }
@@ -295,7 +323,7 @@ public class GeograpicalMetaPathMFRecommender extends MatrixFactorizationRecomme
     /**
      * 保存所有预测结果到文件，每个用户对每个地点的偏好特征
      */
-    protected boolean saveAllPredict(String outputFile) throws LibrecException {
+    public boolean saveAllPredict(String outputFile) throws LibrecException {
         BiMap<Integer, String> inverseUserIds = userMappingData.inverse();
         BiMap<Integer, String> inverseItemIds = itemMappingData.inverse();
         File file = new File(outputFile);

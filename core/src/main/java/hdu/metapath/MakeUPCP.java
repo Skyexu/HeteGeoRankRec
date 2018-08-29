@@ -26,18 +26,18 @@ public class MakeUPCP implements MakeMetaPath{
     private int numCategories;
     private SparseMatrix UPMatrix;
     private String upInputDataPath;
-    private String pcInputDataPath; // venue category file path
+    private String vcInputDataPath; // venue category file path
     private DenseMatrix preferenceMatrix;
     private SparseMatrix PCMatrix;
 
-    public MakeUPCP(String upInputDataPath,String pcInputDataPath){
+    public MakeUPCP(String upInputDataPath,String vcInputDataPath){
         this.upInputDataPath = upInputDataPath;
-        this.pcInputDataPath = pcInputDataPath;
+        this.vcInputDataPath = vcInputDataPath;
     }
     @Override
     public void processData() throws IOException{
         readUPData(upInputDataPath);
-        readVCData(pcInputDataPath);
+        readVCData(vcInputDataPath);
         processPreferenceMatrix();
     }
     private void readUPData(String inputDataPath) throws IOException {
@@ -58,7 +58,7 @@ public class MakeUPCP implements MakeMetaPath{
             String[] data = line.trim().split("[ \t,]+");
             String user = data[0];
             String item = data[1];
-            int count = Integer.parseInt(data[2]);
+            int count = Double.valueOf(data[2]).intValue();
             int row = userIds.containsKey(user) ? userIds.get(user) : userIds.size();
             userIds.put(user, row);
 
@@ -71,6 +71,7 @@ public class MakeUPCP implements MakeMetaPath{
         int numRows = numUsers(), numCols = numItems();
         // build counting matrix
         UPMatrix = new SparseMatrix(numRows, numCols, dataTable, colMap);
+        SparseMatrix.reshape(UPMatrix);
         numUsers = numUsers();
         numItems = numItems();
         // release memory of data table
@@ -101,11 +102,12 @@ public class MakeUPCP implements MakeMetaPath{
         int numRows = numItems(), numCols = numCategorys();
         PCMatrix = new SparseMatrix(numRows, numCols, dataTable, colMap);
         numCategories = numCols;
+        SparseMatrix.reshape(PCMatrix);
         // release memory of data table
         dataTable = null;
     }
     private void processPreferenceMatrix(){
-
+        LOG.info("numUsers:" + numUsers + " numItems: " + numItems);
         preferenceMatrix = new DenseMatrix(numUsers, numItems);
         DenseMatrix upc = new DenseMatrix(numUsers,numCategories);
         for (int userIdx = 0; userIdx < numUsers; userIdx++) {

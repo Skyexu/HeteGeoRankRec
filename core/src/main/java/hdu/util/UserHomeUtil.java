@@ -15,7 +15,7 @@ import java.util.Map;
 public class UserHomeUtil {
     public static void getHomeLocationFromUserCheckin(String userVenueLatLonFile,String outputUserHomeFile) throws CheckinException {
         // 经度为 20KM 的 GeoHash
-        GeoHash geoHash = new GeoHash(10);
+        GeoHash geoHash = new GeoHash(4);
         // GeoHash lat lon
         Map<String,List<double[]>> geoHashLatLon = new HashMap<>();
         // User home lat lone

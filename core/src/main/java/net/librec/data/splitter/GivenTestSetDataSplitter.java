@@ -86,6 +86,7 @@ public class GivenTestSetDataSplitter extends AbstractDataSplitter {
                 } catch (IOException e) {
                     throw new LibrecException(e);
                 }
+
                 for (int u = 0, um = preferenceMatrix.numRows(); u < um; u++) {
                     SparseVector uv = preferenceMatrix.row(u);
                     for (VectorEntry j : uv) {

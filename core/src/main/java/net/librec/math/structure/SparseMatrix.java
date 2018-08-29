@@ -237,23 +237,24 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
                            Multimap<Integer, Integer> columnStructure) {
         int nnz = dataTable.size();
 
-        // CRS
+        // CRS 压缩行存储
         rowPtr = new int[numRows + 1];
         colInd = new int[nnz];
         rowData = new double[nnz];
 
         int j = 0;
         for (int i = 1; i <= numRows; ++i) {
+            // 存储 rowPtr，为稀疏矩阵中每行第一个非0元素在 rowData 中的索引
             Set<Integer> cols = dataTable.row(i - 1).keySet();
             rowPtr[i] = rowPtr[i - 1] + cols.size();
-
+            // 存储 colInd，按行读取时，依次出现的非零值所在的列下标
             for (int col : cols) {
                 colInd[j++] = col;
                 if (col < 0 || col >= numColumns)
                     throw new IllegalArgumentException("colInd[" + j + "]=" + col
                             + ", which is not a valid column index");
             }
-
+            // 排序，保证列是从小到大的顺序
             Arrays.sort(colInd, rowPtr[i - 1], rowPtr[i]);
         }
 
@@ -265,6 +266,7 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
         j = 0;
         for (int i = 1; i <= numColumns; ++i) {
             // dataTable.col(i-1) is more time-consuming than columnStructure.get(i-1)
+            // 由于 dataTable.col(i-1) 比 columnStructure.get(i-1) 慢很多，使用 colMap 来加快构建速度
             Collection<Integer> rows = columnStructure != null ? columnStructure.get(i - 1) : dataTable.column(i - 1)
                     .keySet();
             colPtr[i] = colPtr[i - 1] + rows.size();
@@ -278,7 +280,7 @@ public class SparseMatrix implements Iterable<MatrixEntry>, DataMatrix, Serializ
             Arrays.sort(rowInd, colPtr[i - 1], colPtr[i]);
         }
 
-        // set data
+        // set data  设置稀疏矩阵中的非0值，包括 rowData 和 colData
         for (Cell<Integer, Integer, ? extends Number> en : dataTable.cellSet()) {
             int row = en.getRowKey();
             int col = en.getColumnKey();

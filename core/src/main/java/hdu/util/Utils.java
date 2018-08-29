@@ -2531,7 +2531,7 @@ public class Utils {
 						itemId = inverseItemIds.get(j);
 						data = (int)matrix.get(i,j);
 						//if (data > 0)
-							writer.write(userId + "\t" + itemId + "\t" + data +"\n");
+						writer.write(userId + "\t" + itemId + "\t" + data +"\n");
 					}
 				}
 

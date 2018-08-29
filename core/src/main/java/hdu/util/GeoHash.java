@@ -22,8 +22,8 @@ public class GeoHash {
         this.latUnit  = (Max_Lat - Min_Lat) / (1 << 20);
         this.lngUnit = (Max_Lng - Min_Lng) / (1 << 20);
     }
-    public GeoHash(int length){
-        this.length = length;
+    public GeoHash(int len){
+        this.length = len * 5 / 2;
         this.latUnit  = (Max_Lat - Min_Lat) / (1 << length);
         this.lngUnit = (Max_Lng - Min_Lng) / (1 << length);
     }

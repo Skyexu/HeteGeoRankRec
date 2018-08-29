@@ -6,6 +6,8 @@ import net.librec.common.LibrecException;
 import net.librec.math.structure.*;
 import net.librec.recommender.MatrixFactorizationRecommender;
 
+import java.io.*;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -70,6 +72,8 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
 
     @Override
     protected void trainModel() throws LibrecException {
+        System.out.println(numUsers+"-"+numItems);
+        saveTrainTestSet();
 
         // 以稀疏矩阵存储训练数据，稠密矩阵存储分解后的矩阵
         // 用户、物品对角矩阵，值为正则化参数
@@ -132,6 +136,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
                 // udpate user factors    更新用户向量
                 X.setRow(userIdx, xu);
                 //System.out.println("now update:" + userIdx);
+                Y_ = null;
             }
 
             // Step 2: update item factors;
@@ -200,6 +205,7 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
                 LOG.info(getClass() + " runs at iteration = " + iter + " " + new Date());
             }
         }
+
     }
 
     /**
@@ -284,4 +290,47 @@ public class GeograpicalMFRecommender extends MatrixFactorizationRecommender {
                 powerA, powerB,
                 zeroDistanceDefaultValue, distance) / maxGeoProb;
     }
+    public void saveTrainTestSet(){
+        BiMap<Integer, String> inverseUserIds = userMappingData.inverse();
+        BiMap<Integer, String> inverseItemIds = itemMappingData.inverse();
+        String outPath = conf.get("dfs.data.dir");
+        String newTrainPath = outPath + "newTrain_uvc.txt";
+        String newTestPath = outPath + "newTest_uvc.txt";
+        File trainFile = new File(newTrainPath);
+        BufferedWriter writer = null;
+        try {
+            if (!trainFile.getParentFile().exists())
+                trainFile.getParentFile().mkdirs();
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(trainFile)));
+            for (int i = 0; i < numUsers; i++) {
+                for (int j = 0; j < numItems; j++) {
+                    writer.write(inverseUserIds.get(i) + "\t" + inverseItemIds.get(j) + "\t" + trainMatrix.get(i,j) + "\n");
+                }
+            }
+            writer.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        LOG.info("New train  dataset path is " + outPath);
+
+        File testFile = new File(newTestPath);
+        try {
+            if (!testFile.getParentFile().exists())
+                testFile.getParentFile().mkdirs();
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(testFile)));
+            for (int i = 0; i < numUsers; i++) {
+                for (int j = 0; j < numItems; j++) {
+                    writer.write(inverseUserIds.get(i) + "\t" + inverseItemIds.get(j) + "\t" + testMatrix.get(i,j) + "\n");
+                }
+            }
+            writer.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        LOG.info("New test  dataset path is " + outPath);
+
+    }
+
 }

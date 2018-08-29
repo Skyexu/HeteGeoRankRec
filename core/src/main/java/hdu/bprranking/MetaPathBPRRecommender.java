@@ -1,18 +1,18 @@
 package hdu.bprranking;
 
 import com.google.common.collect.BiMap;
+import hdu.geomf.GeoDataAppender;
+import hdu.util.GeoHash;
 import net.librec.common.LibrecException;
 import net.librec.math.algorithm.Maths;
 import net.librec.math.algorithm.Randoms;
 import net.librec.math.structure.DenseMatrix;
 import net.librec.math.structure.DenseVector;
 import net.librec.math.structure.SparseMatrix;
+import net.librec.math.structure.SparseVector;
 import net.librec.recommender.AbstractRecommender;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Author: Skye
@@ -21,6 +21,7 @@ import java.util.Set;
  */
 public class MetaPathBPRRecommender extends AbstractRecommender{
 
+    protected HashMap<Integer, double[]> poiLocation;
     /**
      * 特征矩阵
      */
@@ -68,6 +69,7 @@ public class MetaPathBPRRecommender extends AbstractRecommender{
     @Override
     protected void setup() throws LibrecException {
         super.setup();
+        poiLocation = ((GeoDataAppender) getDataModel().getDataAppender()).getPoiLocation();
         weightVector = new DenseVector(featureMaxtrix.numColumns);
         numIterations = conf.getInt("rec.iterator.maximum",100);
         learnRate = conf.getFloat("rec.iterator.learnrate", 0.01f);
@@ -82,6 +84,7 @@ public class MetaPathBPRRecommender extends AbstractRecommender{
 
         // initialize weightVector
         weightVector.init(initMean, initStd);
+        //weightVector.setData(new double[]{0.1,0.1,0.2,0.2,0.4});
         inverseUserMapping = userMappingData.inverse();
         inverseVenueMapping = itemMappingData.inverse();
     }
@@ -90,25 +93,41 @@ public class MetaPathBPRRecommender extends AbstractRecommender{
     protected void trainModel() throws LibrecException {
         userItemsSet = getUserItemsSet(trainMatrix);
         int maxSample = trainMatrix.size();
-
+        GeoHash geoHash = new GeoHash(4);
         for (int iter = 1; iter <= numIterations; iter++) {
 
             loss = 0.0d;
             for (int sampleCount = 0; sampleCount < maxSample; sampleCount++) {
 
                 // randomly draw (userIdx, posVenueIdx, negVenueIdx)
+
                 int userIdx, posVenueIdx, negVenueIdx;
                 while (true) {
                     userIdx = Randoms.uniform(numUsers);
+                    // 用户访问过的地点为正样本
                     Set<Integer> itemSet = userItemsSet.get(userIdx);
                     if (itemSet.size() == 0 || itemSet.size() == numItems)
                         continue;
+                    Set<String> userGeoHash = new HashSet<>();
+                    for (int item:
+                         itemSet) {
+                        userGeoHash.add(geoHash.encode(poiLocation.get(item)[0],poiLocation.get(item)[1]));
+                    }
 
                     List<Integer> itemList = trainMatrix.getColumns(userIdx);
                     posVenueIdx = itemList.get(Randoms.uniform(itemList.size()));
+                    String negItemGeoHash;
                     do {
+                        //1. 没访问过的地点
                         negVenueIdx = Randoms.uniform(numItems);
-                    } while (itemSet.contains(negVenueIdx));
+                        // 2. 与已访问过的地点相距离不超过 20KM 的为候选样本
+                        negItemGeoHash = geoHash.encode(poiLocation.get(negVenueIdx)[0],poiLocation.get(negVenueIdx)[1]);
+                    } while (itemSet.contains(negVenueIdx) && !userGeoHash.contains(negItemGeoHash));
+                   // } while (itemSet.contains(negVenueIdx));
+//                    String posKey = inverseUserMapping.get(userIdx) +"_"+ inverseVenueMapping.get(posVenueIdx);
+//                    String negKey = inverseUserMapping.get(userIdx) +"_"+ inverseVenueMapping.get(negVenueIdx);
+//                    if (!uservenueMapping.containsKey(posKey) || !uservenueMapping.containsKey(negKey))
+//                        continue;
 
                     break;
                 }
@@ -128,13 +147,17 @@ public class MetaPathBPRRecommender extends AbstractRecommender{
                 String posKey = inverseUserMapping.get(userIdx) +"_"+ inverseVenueMapping.get(posVenueIdx);
                 String negKey = inverseUserMapping.get(userIdx) +"_"+ inverseVenueMapping.get(negVenueIdx);
 
-
                 DenseVector posVector = featureMaxtrix.row(uservenueMapping.get(posKey));
                 DenseVector negVector = featureMaxtrix.row(uservenueMapping.get(negKey));
 
+
                 // 负梯度方向更新 theta
+                DenseVector tempweightVector = weightVector;
                 weightVector = posVector.minus(negVector).scaleEqual(-deriValue).add(weightVector.scale(reg));
-                weightVector = weightVector.scale(-learnRate).add(weightVector);
+                weightVector = weightVector.scale(-learnRate).add(tempweightVector);
+
+
+
 
 //                if (weightVector.sum() > 5){
 //                    weightVector.init(initMean,initStd);
@@ -150,6 +173,7 @@ public class MetaPathBPRRecommender extends AbstractRecommender{
             }
             updateLRate(iter);
         }
+        //weightVector.setData(new double[]{0.1,0.1,0.2,0.2,0.4});
     }
 
     @Override

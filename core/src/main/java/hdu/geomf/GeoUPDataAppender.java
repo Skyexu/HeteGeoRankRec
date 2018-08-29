@@ -92,7 +92,7 @@ public class GeoUPDataAppender extends Configured implements DataAppender {
             String[] data = line.trim().split("[ \t,]+");
             String user = data[0];
             String item = data[1];
-            int count = Integer.parseInt(data[2]);
+            int count = Double.valueOf(data[2]).intValue();
             if (!userMappingData.containsKey(user))
                 throw new IOException("there is no user:" + user);
             int row = userMappingData.get(user);
@@ -106,7 +106,7 @@ public class GeoUPDataAppender extends Configured implements DataAppender {
 
         // build counting matrix
         upTrainMatrix = new SparseMatrix(userMappingData.size(), itemMappingData.size(), dataTable, colMap);
-
+        SparseMatrix.reshape(upTrainMatrix);
         // release memory of data table
         dataTable = null;
         content = null;

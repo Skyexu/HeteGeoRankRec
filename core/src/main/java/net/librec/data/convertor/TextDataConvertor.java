@@ -291,6 +291,8 @@ public class TextDataConvertor extends AbstractDataConvertor {
         int numRows = numUsers(), numCols = numItems();
         // build rating matrix
         preferenceMatrix = new SparseMatrix(numRows, numCols, dataTable, colMap);
+        // 矩阵中删除可能的数据为0的值
+        SparseMatrix.reshape(preferenceMatrix);
         if (timeTable != null)
             datetimeMatrix = new SparseMatrix(numRows, numCols, timeTable, colMap);
         // release memory of data table

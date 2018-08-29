@@ -126,10 +126,14 @@ public class RatioDataSplitter extends AbstractDataSplitter {
      * @param ratio the ratio of training data over all the ratings
      */
     public void getRatioByRating(double ratio) {
+        // 使测试集与训练集默认为输入矩阵，因为元路径取特征时无需测试集
+        testMatrix = new SparseMatrix(preferenceMatrix);
+        trainMatrix = new SparseMatrix(preferenceMatrix);
+
         if (ratio > 0 && ratio < 1) {
 
-            testMatrix = new SparseMatrix(preferenceMatrix);
-            trainMatrix = new SparseMatrix(preferenceMatrix);
+//            testMatrix = new SparseMatrix(preferenceMatrix);
+//            trainMatrix = new SparseMatrix(preferenceMatrix);
 
             for(MatrixEntry matrixEntry: preferenceMatrix){
                 int userIdx = matrixEntry.row();

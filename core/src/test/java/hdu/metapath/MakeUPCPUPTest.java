@@ -12,13 +12,13 @@ import java.io.IOException;
  */
 public class MakeUPCPUPTest {
     public static void main(String[] args) throws IOException {
-        String path  = "D:\\Works\\论文\\dataSet\\experimentData\\Foursquare\\";
-        String upFile = path + "process/小数据量/user_chekin_venue_count.txt";
-        String pcFile = path + "process/小数据量/venueId_category_small.txt";
+        String path  = "D:\\Works\\论文\\dataSet\\experimentData\\Foursquare\\process\\实验数据8_21\\";
+        String upFile = path + "newTrain_uvc.txt";
+        String pcFile = path + "venueId_categoryId.txt";
         MakeUPCPUP upcpupMaker = new MakeUPCPUP(upFile,pcFile);
         upcpupMaker.processData();
         DenseMatrix uupMatrix = upcpupMaker.getPreferenceMatrix();
-        String outputPath = path + "process\\小数据量\\metapath\\"+"upcpup.txt";
+        String outputPath = path + "metapath\\"+"upcpup.txt";
         boolean done = Utils.saveDenseMatrix(uupMatrix,upcpupMaker.getUserIds(),upcpupMaker.getItemIds(),outputPath);
         if (done)
             System.out.println("Result path is " + outputPath);

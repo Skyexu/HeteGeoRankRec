@@ -1,5 +1,6 @@
 package hdu.metapath;
 
+import com.google.common.collect.BiMap;
 import net.librec.math.structure.DenseMatrix;
 import net.librec.math.structure.SparseMatrix;
 
@@ -14,4 +15,6 @@ public interface  MakeMetaPath {
 
     void processData() throws IOException;
     DenseMatrix getPreferenceMatrix();
+    BiMap<String, Integer> getUserIds();
+    BiMap<String, Integer> getItemIds();
 }

@@ -53,7 +53,7 @@ public class MakeUPUP implements MakeMetaPath{
             String[] data = line.trim().split("[ \t,]+");
             String user = data[0];
             String item = data[1];
-            int count = Integer.parseInt(data[2]);
+            int count = Double.valueOf(data[2]).intValue();
             int row = userIds.containsKey(user) ? userIds.get(user) : userIds.size();
             userIds.put(user, row);
 
