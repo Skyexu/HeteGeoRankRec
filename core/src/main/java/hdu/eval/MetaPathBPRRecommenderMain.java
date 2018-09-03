@@ -91,6 +91,7 @@ public class MetaPathBPRRecommenderMain {
 
         // evaluate the recommended result
         StringBuilder evalResult = new StringBuilder();
+
         RecommenderEvaluator PRECISION = new PrecisionEvaluator();
         PRECISION.setTopN(10);
         System.out.println("PRECISION:" + recommender.evaluate(PRECISION));
@@ -125,7 +126,7 @@ public class MetaPathBPRRecommenderMain {
         }
     }
 
-    public static void run(Configuration inputConf, DenseMatrix featureMatrix,BiMap<String,Integer> map) throws IOException, LibrecException {
+    public static String run(Configuration inputConf, DenseMatrix featureMatrix,BiMap<String,Integer> map) throws IOException, LibrecException {
         LocalDateTime time = LocalDateTime.now();
         String timeString = time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH_mm_ss"));
 
@@ -207,5 +208,6 @@ public class MetaPathBPRRecommenderMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return evalResult.toString();
     }
 }

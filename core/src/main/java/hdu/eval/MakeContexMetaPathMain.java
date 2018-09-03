@@ -57,5 +57,39 @@ public class MakeContexMetaPathMain {
         CombinContexPath c2 = new CombinContexPath(upcpupMakers,upcpupOutputPath,conf);
         c2.combin();
 
+        // 天气上下文加权
+        String weathertrainPath = path + conf.get("hete.weatherslot.dir");
+
+        LOG.info(weathertrainPath);
+        int weatherSlotNum = conf.getInt("hete.weatherslot.num");
+        String[] weathers = conf.get("hete.weather.names").split(",");
+        // upup 路径
+        for (String weather:
+             weathers) {
+            List<MakeMetaPath> upupWeatherMakers = new ArrayList<>();
+            String upupWeatherOutputPath = path + conf.get("dfs.metapath.dir")+"upupw_" + weather +".txt";
+            for (int i = 0; i < weatherSlotNum; i++) {
+                String upFile = weathertrainPath + weather + "/" + i + "uvc.txt";
+                MakeUPUP upupMaker = new MakeUPUP(upFile);
+                upupMaker.processData();
+                upupWeatherMakers.add(upupMaker);
+            }
+            CombinContexPath cwUpup = new CombinContexPath(upupWeatherMakers,upupWeatherOutputPath,conf);
+            cwUpup.combin();
+        }
+        // upcpup 路径
+        for (String weather:
+                weathers) {
+            List<MakeMetaPath> upcpupWeatherMakers = new ArrayList<>();
+            String upcpupWeatherOutputPath = path + conf.get("dfs.metapath.dir")+"upcpupw_" + weather +".txt";
+            for (int i = 0; i < weatherSlotNum; i++) {
+                String upFile = weathertrainPath + weather + "/" + i + "uvc.txt";
+                MakeUPCPUP upcpupMaker = new MakeUPCPUP(upFile,vcFile);
+                upcpupMaker.processData();
+                upcpupWeatherMakers.add(upcpupMaker);
+            }
+            CombinContexPath cwUpcpup = new CombinContexPath(upcpupWeatherMakers,upcpupWeatherOutputPath,conf);
+            cwUpcpup.combin();
+        }
     }
 }

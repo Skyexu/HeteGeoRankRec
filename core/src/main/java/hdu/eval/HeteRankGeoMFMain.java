@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,7 +30,9 @@ public class HeteRankGeoMFMain {
         Configuration conf = new Configuration();
         Configuration.Resource resource = new Configuration.Resource("rec/skye/heterankgeomf.properties");
         conf.addResource(resource);
-        String[] metaPaths = new String[]{"up","upcp","upcpup","upup","uup","upupt","upcpupt"};
+        String[] metaPaths = new String[]{"up","upcp","upcpup","upup","uup","upupt","upcpupt",
+                "upupw_cloudCover","upupw_humidity","upupw_temperature",
+                "upcpupw_cloudCover","upcpupw_humidity","upcpupw_temperature"};
 /*
         //1. 构造元路径语义相似度矩阵
         int[] userVenueNum = MakeMetaPathMain.run(conf);
@@ -39,7 +42,6 @@ public class HeteRankGeoMFMain {
         // 上下文加权元路径
         MakeContexMetaPathMain.run(conf);
 
-        */
 
         //2. 构建元路径特征
 
@@ -48,7 +50,7 @@ public class HeteRankGeoMFMain {
             GeoMetaPathMFMain.run(conf,metaPath);
         }
 
-
+*/
         //3. 合并元路径特征
         List<String> inputFiles = new ArrayList<>();
         for (String metaPath:

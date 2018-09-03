@@ -298,8 +298,8 @@ public class GeograpicalMetaPathMFRecommender extends MatrixFactorizationRecomme
     /**
      * 获取地理影响值
      *
-     * @param itemIdx            当前地点
-     * @param itemIdxu           用户访问过的一个地点
+     * @param itemIdx  当前地点
+     * @param itemIdxu 用户访问过的一个地点
      * @return
      * @TODO 检查正确与否
      */
@@ -319,7 +319,6 @@ public class GeograpicalMetaPathMFRecommender extends MatrixFactorizationRecomme
                 zeroDistanceDefaultValue, distance) / maxGeoProb;
     }
 
-
     /**
      * 保存所有预测结果到文件，每个用户对每个地点的偏好特征
      */
@@ -336,12 +335,12 @@ public class GeograpicalMetaPathMFRecommender extends MatrixFactorizationRecomme
                     new FileOutputStream(file)));
             for (int i = 0; i < numUsers; i++) {
                 for (int j = 0; j < numItems; j++) {
-                    double data =  predict(i,j);
+                    double data = predict(i, j);
                     writer.write(inverseUserIds.get(i) + "\t" + inverseItemIds.get(j) + "\t" + format.format(data) + "\n");
                 }
             }
             writer.close();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
