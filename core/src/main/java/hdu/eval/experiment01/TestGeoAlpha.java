@@ -3,8 +3,6 @@ package hdu.eval.experiment01;
 import com.google.common.collect.BiMap;
 import hdu.bprranking.CombineFeature;
 import hdu.eval.GeoMetaPathMFMain;
-import hdu.eval.MakeContexMetaPathMain;
-import hdu.eval.MakeMetaPathMain;
 import hdu.eval.MetaPathBPRRecommenderMain;
 import net.librec.conf.Configuration;
 import net.librec.math.structure.DenseMatrix;
@@ -19,12 +17,11 @@ import java.util.List;
 
 /**
  * @Author: Skye
- * @Date: 16:20 2018/8/31
- * @Description: 测试 HeteGeoRankRec 迭代次数
+ * @Date: 13:58 2018/9/5
+ * @Description:  测试 rec.geomf.alpha
  */
-
-public class TestMetaPathIterator {
-    private static final Log LOG = LogFactory.getLog(TestMetaPathIterator.class);
+public class TestGeoAlpha {
+    private static final Log LOG = LogFactory.getLog(TestGeoAlpha.class);
 
     public static void main(String[] args) throws Exception {
         // 读取配置文件
@@ -48,8 +45,8 @@ public class TestMetaPathIterator {
         //2. 构建元路径特征
         List<String> evalList = new ArrayList<>();
 
-        for (int i = 10; i <= 60; i += 10) {
-            conf.set("metapath.rec.iterator.maximum", i + "");
+        for (double i = 0.0; i <= 0.6; i += 0.2) {
+            conf.set("rec.geomf.alpha", i + "");
 
             for (String metaPath :
                     metaPaths) {
@@ -78,7 +75,7 @@ public class TestMetaPathIterator {
         }
         LocalDateTime time = LocalDateTime.now();
         String timeString = time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH_mm_ss"));
-        String outPath = conf.get("dfs.eval.dir") + "testMetaPathIterator/testMetaPathIterator" + timeString;
+        String outPath = conf.get("dfs.eval.dir") + "testGeoAlpha/testGeoAlpha" + timeString;
         FileUtil.writeList(outPath,evalList);
     }
 }

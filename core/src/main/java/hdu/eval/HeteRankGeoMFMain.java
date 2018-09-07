@@ -26,10 +26,12 @@ public class HeteRankGeoMFMain {
     private static final Log LOG = LogFactory.getLog(HeteRankGeoMFMain.class);
 
     public static void main(String[] args) throws Exception {
+
         // 读取配置文件
         Configuration conf = new Configuration();
         Configuration.Resource resource = new Configuration.Resource("rec/skye/heterankgeomf.properties");
         conf.addResource(resource);
+
         String[] metaPaths = new String[]{"up","upcp","upcpup","upup","uup","upupt","upcpupt",
                 "upupw_cloudCover","upupw_humidity","upupw_temperature",
                 "upcpupw_cloudCover","upcpupw_humidity","upcpupw_temperature"};
@@ -49,8 +51,8 @@ public class HeteRankGeoMFMain {
              metaPaths) {
             GeoMetaPathMFMain.run(conf,metaPath);
         }
-
 */
+
         //3. 合并元路径特征
         List<String> inputFiles = new ArrayList<>();
         for (String metaPath:

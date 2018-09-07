@@ -172,9 +172,10 @@ public class MetaPathBPRRecommenderMain {
         StringBuilder evalResult = new StringBuilder();
         evalResult.append("rec.iterator.maximum: " + conf.get("rec.iterator.maximum")+"\n")
         .append("rec.metapathbpr.regularization: " + conf.get("rec.metapathbpr.regularization")+"\n")
-        .append("rec.recommender.isranking: " + conf.get("rec.recommender.isranking")+"\n")
-        .append("rec.recommender.ranking.topn: " + conf.get("rec.recommender.ranking.topn")+"\n");
-
+        .append("rec.recommender.ranking.topn: " + conf.get("rec.recommender.ranking.topn")+"\n")
+        .append("metapath.rec.iterator.maximum: " + inputConf.get("metapath.rec.iterator.maximum")+"\n")
+        .append("metapath.rec.factor.number: "+ inputConf.get("metapath.rec.factor.number")+"\n")
+        .append("rec.geomf.alpha" + inputConf.get("rec.geomf.alpha")+"\n");
 
         RecommenderEvaluator PRECISION = new PrecisionEvaluator();
         PRECISION.setTopN(topN);

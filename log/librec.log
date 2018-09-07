@@ -515,3 +515,700 @@ All dataset files size 84729
 Now loading dataset file upcp
 poi lat lon data: ...\process/小数据量\venue_place_small.txt
 up data: ...ss/小数据量\user_chekin_venue_count.txt
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 10 is 0.11885292405396719
+Evaluator value:Novelty top 10 is 27.878464313453282
+Evaluator value:Entropy top 10 is 10.725221762220986
+Evaluator value:NDCG top 10 is 0.12566128703211396
+Evaluator value:AP top 10 is 0.07197246854253106
+Evaluator value:PRECISION top 10 is 0.05394932935916568
+Evaluator value:AUC top 10 is 0.7189386452386894
+Evaluator value:RR top 10 is 0.26495576372625546
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-userknn-output/userknn
+Dataset: ...ss/小数据量/user_chekin_venue_count.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\小数据量\user_chekin_venue_count.txt]
+All dataset files size 16766
+Now loading dataset file user_chekin_venue_count
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1035
+Data size of testing is 272
+Dataset: ...ss/小数据量/user_chekin_venue_count.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\小数据量\user_chekin_venue_count.txt]
+All dataset files size 16766
+Now loading dataset file user_chekin_venue_count
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1035
+Data size of testing is 272
+Dataset: ...ss/小数据量/user_chekin_venue_count.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\小数据量\user_chekin_venue_count.txt]
+All dataset files size 16766
+Now loading dataset file user_chekin_venue_count
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 1035
+Data size of testing is 272
+Job Setup completed.
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 10 is 0.2610526315789474
+Evaluator value:Novelty top 10 is 42.07918269103231
+Evaluator value:Entropy top 10 is 19.340092209988452
+Evaluator value:NDCG top 10 is 0.14262111845487083
+Evaluator value:AP top 10 is 0.09235679476468948
+Evaluator value:PRECISION top 10 is 0.041578947368421014
+Evaluator value:AUC top 10 is 0.6468741300111768
+Evaluator value:RR top 10 is 0.12601712614870506
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//process/小数据量/user_chekin_venue_count.txt-userknn-output/userknn
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46615.01790784984, delta_loss = -46615.02
+BPRRecommender iter 2: loss = 46335.845041401255, delta_loss = 279.17285
+BPRRecommender iter 3: loss = 45999.17209580783, delta_loss = 336.67294
+BPRRecommender iter 4: loss = 45520.11766435558, delta_loss = 479.05444
+BPRRecommender iter 5: loss = 44652.90710207752, delta_loss = 867.2106
+BPRRecommender iter 6: loss = 43298.4511489651, delta_loss = 1354.4559
+BPRRecommender iter 7: loss = 41597.443836307284, delta_loss = 1701.0073
+BPRRecommender iter 8: loss = 39560.524909730615, delta_loss = 2036.919
+BPRRecommender iter 9: loss = 37310.35034942627, delta_loss = 2250.1746
+BPRRecommender iter 10: loss = 35052.85988738467, delta_loss = 2257.4905
+BPRRecommender iter 11: loss = 33062.466168884115, delta_loss = 1990.3937
+BPRRecommender iter 12: loss = 31221.40644699659, delta_loss = 1841.0597
+BPRRecommender iter 13: loss = 29772.816785319996, delta_loss = 1448.5897
+BPRRecommender iter 14: loss = 28499.91032946752, delta_loss = 1272.9065
+BPRRecommender iter 15: loss = 27220.231237190277, delta_loss = 1279.6791
+BPRRecommender iter 16: loss = 26178.498376052616, delta_loss = 1041.7329
+BPRRecommender iter 17: loss = 25293.683767085702, delta_loss = 884.81464
+BPRRecommender iter 18: loss = 24694.811031826557, delta_loss = 598.87274
+BPRRecommender iter 19: loss = 23923.127709702967, delta_loss = 771.68335
+BPRRecommender iter 20: loss = 23443.601411186253, delta_loss = 479.5263
+BPRRecommender iter 21: loss = 22830.24963536593, delta_loss = 613.35175
+BPRRecommender iter 22: loss = 22355.042084093377, delta_loss = 475.20755
+BPRRecommender iter 23: loss = 21917.27662234917, delta_loss = 437.76547
+BPRRecommender iter 24: loss = 21513.12810453212, delta_loss = 404.14853
+BPRRecommender iter 25: loss = 21296.522848860543, delta_loss = 216.60526
+BPRRecommender iter 26: loss = 20799.7477556446, delta_loss = 496.7751
+BPRRecommender iter 27: loss = 20645.637761399346, delta_loss = 154.11
+BPRRecommender iter 28: loss = 20467.823888803516, delta_loss = 177.81387
+BPRRecommender iter 29: loss = 20148.380506200054, delta_loss = 319.4434
+BPRRecommender iter 30: loss = 19813.060822268104, delta_loss = 335.31967
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.03338301043219079
+Evaluator value:AP top 10 is 0.029633593377738583
+Evaluator value:AUC top 10 is 0.6385303535948704
+Evaluator value:RECALL top 10 is 0.06506172128579409
+Evaluator value:NDCG top 10 is 0.0616558302567799
+Evaluator value:Entropy top 10 is 40.68491182394576
+Evaluator value:RR top 10 is 0.1343706384689992
+Evaluator value:Novelty top 10 is 39.86605619007964
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.033979135618479935
+Evaluator value:AP top 10 is 0.030997725385898702
+Evaluator value:AUC top 10 is 0.6421643262441189
+Evaluator value:RECALL top 10 is 0.06522609708907365
+Evaluator value:NDCG top 10 is 0.06309697122564506
+Evaluator value:Entropy top 10 is 44.14999006799865
+Evaluator value:RR top 10 is 0.1365623447590661
+Evaluator value:Novelty top 10 is 41.313843062907516
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.042921013412816796
+Evaluator value:AP top 10 is 0.04616497701636267
+Evaluator value:AUC top 10 is 0.6775947747263031
+Evaluator value:RECALL top 10 is 0.09095263744249465
+Evaluator value:NDCG top 10 is 0.08844347422676667
+Evaluator value:Entropy top 10 is 25.723785148588
+Evaluator value:RR top 10 is 0.18704433089678985
+Evaluator value:Novelty top 10 is 33.0498375612432
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+BPRRecommender iter 31: loss = 17529.009465662853, delta_loss = 156.35481
+BPRRecommender iter 32: loss = 17276.732802016995, delta_loss = 252.27666
+BPRRecommender iter 33: loss = 17235.17254890189, delta_loss = 41.560253
+BPRRecommender iter 34: loss = 17201.32761695922, delta_loss = 33.844933
+BPRRecommender iter 35: loss = 17109.025600550816, delta_loss = 92.30202
+BPRRecommender iter 36: loss = 17013.550323240837, delta_loss = 95.47528
+BPRRecommender iter 37: loss = 16934.279168326037, delta_loss = 79.27116
+BPRRecommender iter 38: loss = 16780.818639942572, delta_loss = 153.46053
+BPRRecommender iter 39: loss = 16753.15217290646, delta_loss = 27.666468
+BPRRecommender iter 40: loss = 16713.564779813227, delta_loss = 39.587395
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.03263785394932941
+Evaluator value:AP top 10 is 0.027946068572044354
+Evaluator value:AUC top 10 is 0.6370009521631681
+Evaluator value:RECALL top 10 is 0.0628304736083252
+Evaluator value:NDCG top 10 is 0.058113928804260306
+Evaluator value:Entropy top 10 is 47.85719459125794
+Evaluator value:RR top 10 is 0.12039777162727987
+Evaluator value:Novelty top 10 is 43.14768766631461
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+BPRRecommender iter 31: loss = 17529.009465662853, delta_loss = 156.35481
+BPRRecommender iter 32: loss = 17276.732802016995, delta_loss = 252.27666
+BPRRecommender iter 33: loss = 17235.17254890189, delta_loss = 41.560253
+BPRRecommender iter 34: loss = 17201.32761695922, delta_loss = 33.844933
+BPRRecommender iter 35: loss = 17109.025600550816, delta_loss = 92.30202
+BPRRecommender iter 36: loss = 17013.550323240837, delta_loss = 95.47528
+BPRRecommender iter 37: loss = 16934.279168326037, delta_loss = 79.27116
+BPRRecommender iter 38: loss = 16780.818639942572, delta_loss = 153.46053
+BPRRecommender iter 39: loss = 16753.15217290646, delta_loss = 27.666468
+BPRRecommender iter 40: loss = 16713.564779813227, delta_loss = 39.587395
+Job Train completed.
+Job End.
+Evaluator value:NDCG top 5 is 0.052693082700397624
+Evaluator value:PRECISION top 5 is 0.04143070044709381
+Evaluator value:Novelty top 5 is 20.51362368955304
+Evaluator value:RR top 5 is 0.10792349726775959
+Evaluator value:AUC top 5 is 0.5922788563944014
+Evaluator value:AP top 5 is 0.029816194734227506
+Evaluator value:RECALL top 5 is 0.04047045947428588
+Evaluator value:Entropy top 5 is 26.859495764110736
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+BPRRecommender iter 31: loss = 17529.009465662853, delta_loss = 156.35481
+BPRRecommender iter 32: loss = 17276.732802016995, delta_loss = 252.27666
+BPRRecommender iter 33: loss = 17235.17254890189, delta_loss = 41.560253
+BPRRecommender iter 34: loss = 17201.32761695922, delta_loss = 33.844933
+BPRRecommender iter 35: loss = 17109.025600550816, delta_loss = 92.30202
+BPRRecommender iter 36: loss = 17013.550323240837, delta_loss = 95.47528
+BPRRecommender iter 37: loss = 16934.279168326037, delta_loss = 79.27116
+BPRRecommender iter 38: loss = 16780.818639942572, delta_loss = 153.46053
+BPRRecommender iter 39: loss = 16753.15217290646, delta_loss = 27.666468
+BPRRecommender iter 40: loss = 16713.564779813227, delta_loss = 39.587395
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 15 is 0.07699127395643797
+Evaluator value:RR top 15 is 0.12443707559206821
+Evaluator value:Novelty top 15 is 66.70410136955657
+Evaluator value:Entropy top 15 is 66.63151608996495
+Evaluator value:AUC top 15 is 0.6614557508486981
+Evaluator value:AP top 15 is 0.028721598859497162
+Evaluator value:PRECISION top 15 is 0.027719821162444057
+Evaluator value:NDCG top 15 is 0.0635336525627148
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+BPRRecommender iter 31: loss = 17529.009465662853, delta_loss = 156.35481
+BPRRecommender iter 32: loss = 17276.732802016995, delta_loss = 252.27666
+BPRRecommender iter 33: loss = 17235.17254890189, delta_loss = 41.560253
+BPRRecommender iter 34: loss = 17201.32761695922, delta_loss = 33.844933
+BPRRecommender iter 35: loss = 17109.025600550816, delta_loss = 92.30202
+BPRRecommender iter 36: loss = 17013.550323240837, delta_loss = 95.47528
+BPRRecommender iter 37: loss = 16934.279168326037, delta_loss = 79.27116
+BPRRecommender iter 38: loss = 16780.818639942572, delta_loss = 153.46053
+BPRRecommender iter 39: loss = 16753.15217290646, delta_loss = 27.666468
+BPRRecommender iter 40: loss = 16713.564779813227, delta_loss = 39.587395
+Job Train completed.
+Job End.
+Evaluator value:AUC top 20 is 0.6858857669063433
+Evaluator value:NDCG top 20 is 0.06948539347353316
+Evaluator value:Entropy top 20 is 83.81004770765456
+Evaluator value:PRECISION top 20 is 0.02481371087928473
+Evaluator value:Novelty top 20 is 90.76153237814256
+Evaluator value:RR top 20 is 0.12723641728079224
+Evaluator value:AP top 20 is 0.029758104863733238
+Evaluator value:RECALL top 20 is 0.09377942795381901
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+BPRRecommender iter 31: loss = 17529.009465662853, delta_loss = 156.35481
+BPRRecommender iter 32: loss = 17276.732802016995, delta_loss = 252.27666
+BPRRecommender iter 33: loss = 17235.17254890189, delta_loss = 41.560253
+BPRRecommender iter 34: loss = 17201.32761695922, delta_loss = 33.844933
+BPRRecommender iter 35: loss = 17109.025600550816, delta_loss = 92.30202
+BPRRecommender iter 36: loss = 17013.550323240837, delta_loss = 95.47528
+BPRRecommender iter 37: loss = 16934.279168326037, delta_loss = 79.27116
+BPRRecommender iter 38: loss = 16780.818639942572, delta_loss = 153.46053
+BPRRecommender iter 39: loss = 16753.15217290646, delta_loss = 27.666468
+BPRRecommender iter 40: loss = 16713.564779813227, delta_loss = 39.587395
+Job Train completed.
+Job End.
+Evaluator value:AUC top 50 is 0.7568298514751892
+Evaluator value:RECALL top 50 is 0.15563718761147027
+Evaluator value:NDCG top 50 is 0.0896689520970194
+Evaluator value:Entropy top 50 is 171.3125552765328
+Evaluator value:RR top 50 is 0.13193771695077114
+Evaluator value:Novelty top 50 is 244.23473647884938
+Evaluator value:PRECISION top 50 is 0.01654247391952298
+Evaluator value:AP top 50 is 0.03270058763795935
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+BPRRecommender iter 31: loss = 17529.009465662853, delta_loss = 156.35481
+BPRRecommender iter 32: loss = 17276.732802016995, delta_loss = 252.27666
+BPRRecommender iter 33: loss = 17235.17254890189, delta_loss = 41.560253
+BPRRecommender iter 34: loss = 17201.32761695922, delta_loss = 33.844933
+BPRRecommender iter 35: loss = 17109.025600550816, delta_loss = 92.30202
+BPRRecommender iter 36: loss = 17013.550323240837, delta_loss = 95.47528
+BPRRecommender iter 37: loss = 16934.279168326037, delta_loss = 79.27116
+BPRRecommender iter 38: loss = 16780.818639942572, delta_loss = 153.46053
+BPRRecommender iter 39: loss = 16753.15217290646, delta_loss = 27.666468
+BPRRecommender iter 40: loss = 16713.564779813227, delta_loss = 39.587395
+Job Train completed.
+Job End.
+Evaluator value:RECALL top 15 is 0.07699127395643797
+Evaluator value:RR top 15 is 0.12443707559206821
+Evaluator value:Novelty top 15 is 66.70410136955657
+Evaluator value:Entropy top 15 is 66.63151608996495
+Evaluator value:AUC top 15 is 0.6614557508486981
+Evaluator value:AP top 15 is 0.028721598859497162
+Evaluator value:PRECISION top 15 is 0.027719821162444057
+Evaluator value:NDCG top 15 is 0.0635336525627148
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+BPRRecommender iter 1: loss = 46661.00022404035, delta_loss = -46661.0
+BPRRecommender iter 2: loss = 46140.30003449343, delta_loss = 520.7002
+BPRRecommender iter 3: loss = 45478.39489970328, delta_loss = 661.90515
+BPRRecommender iter 4: loss = 44506.4790622501, delta_loss = 971.91583
+BPRRecommender iter 5: loss = 43091.7363097779, delta_loss = 1414.7428
+BPRRecommender iter 6: loss = 41241.872299906936, delta_loss = 1849.864
+BPRRecommender iter 7: loss = 38985.26623065454, delta_loss = 2256.606
+BPRRecommender iter 8: loss = 36583.792131227, delta_loss = 2401.474
+BPRRecommender iter 9: loss = 34096.19578667925, delta_loss = 2487.5964
+BPRRecommender iter 10: loss = 31876.405277866328, delta_loss = 2219.7905
+BPRRecommender iter 11: loss = 29967.89804195514, delta_loss = 1908.5072
+BPRRecommender iter 12: loss = 28108.761434537486, delta_loss = 1859.1366
+BPRRecommender iter 13: loss = 26693.012327772478, delta_loss = 1415.7491
+BPRRecommender iter 14: loss = 25466.791723385573, delta_loss = 1226.2206
+BPRRecommender iter 15: loss = 24218.81656464389, delta_loss = 1247.9752
+BPRRecommender iter 16: loss = 23219.77425689008, delta_loss = 999.0423
+BPRRecommender iter 17: loss = 22604.28170892394, delta_loss = 615.49255
+BPRRecommender iter 18: loss = 21870.784624287946, delta_loss = 733.4971
+BPRRecommender iter 19: loss = 21189.990545681543, delta_loss = 680.79407
+BPRRecommender iter 20: loss = 20699.7047361501, delta_loss = 490.2858
+BPRRecommender iter 21: loss = 20233.753569616132, delta_loss = 465.95117
+BPRRecommender iter 22: loss = 19775.983882337627, delta_loss = 457.76968
+BPRRecommender iter 23: loss = 19367.14548054019, delta_loss = 408.8384
+BPRRecommender iter 24: loss = 19132.151804328987, delta_loss = 234.99368
+BPRRecommender iter 25: loss = 18719.92009519154, delta_loss = 412.23172
+BPRRecommender iter 26: loss = 18431.54022111985, delta_loss = 288.37988
+BPRRecommender iter 27: loss = 18298.26649666442, delta_loss = 133.27373
+BPRRecommender iter 28: loss = 17999.731554817998, delta_loss = 298.53494
+BPRRecommender iter 29: loss = 17687.90272189222, delta_loss = 311.82883
+BPRRecommender iter 30: loss = 17685.364275742377, delta_loss = 2.5384462
+BPRRecommender iter 31: loss = 17529.009465662853, delta_loss = 156.35481
+BPRRecommender iter 32: loss = 17276.732802016995, delta_loss = 252.27666
+BPRRecommender iter 33: loss = 17235.17254890189, delta_loss = 41.560253
+BPRRecommender iter 34: loss = 17201.32761695922, delta_loss = 33.844933
+BPRRecommender iter 35: loss = 17109.025600550816, delta_loss = 92.30202
+BPRRecommender iter 36: loss = 17013.550323240837, delta_loss = 95.47528
+BPRRecommender iter 37: loss = 16934.279168326037, delta_loss = 79.27116
+BPRRecommender iter 38: loss = 16780.818639942572, delta_loss = 153.46053
+BPRRecommender iter 39: loss = 16753.15217290646, delta_loss = 27.666468
+BPRRecommender iter 40: loss = 16713.564779813227, delta_loss = 39.587395
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.03263785394932941
+Evaluator value:AP top 10 is 0.027946068572044354
+Evaluator value:AUC top 10 is 0.6370009521631681
+Evaluator value:RECALL top 10 is 0.0628304736083252
+Evaluator value:NDCG top 10 is 0.058113928804260306
+Evaluator value:Entropy top 10 is 47.85719459125794
+Evaluator value:RR top 10 is 0.12039777162727987
+Evaluator value:Novelty top 10 is 43.14768766631461
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-bpr-output/bpr
+Dataset: ../data/filmtrust/rating
+All dataset files [..\data\filmtrust\rating\ratings_0.txt, ..\data\filmtrust\rating\ratings_1.txt, ..\data\filmtrust\rating\ratings_2.txt, ..\data\filmtrust\rating\ratings_3.txt]
+All dataset files size 411942
+Now loading dataset file ratings_0
+Now loading dataset file ratings_1
+Now loading dataset file ratings_2
+Now loading dataset file ratings_3
+Transform data to Convertor successfully!
+Split data to train Set and test Set successfully!
+Data size of training is 28408
+Data size of testing is 7086
+Job Setup completed.
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.34767166535122473
+Evaluator value:AP top 10 is 0.4523395548183904
+Evaluator value:AUC top 10 is 0.9323629703602099
+Evaluator value:RECALL top 10 is 0.637761713030289
+Evaluator value:NDCG top 10 is 0.5521263644626981
+Evaluator value:Entropy top 10 is 16.24742483774977
+Evaluator value:RR top 10 is 0.6030004635371653
+Evaluator value:Novelty top 10 is 11.160534440131611
+Result path is ../result/filmtrust/rating-mostpopular-output/mostpopular
+Dataset: ...experiment_8_31//preference_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\preference_uvc.txt]
+All dataset files size 216277
+Now loading dataset file preference_uvc
+Transform data to Convertor successfully!
+Dataset: ...ss/experiment_8_31//newTest_uvc.txt
+All dataset files [D:\Works\论文\dataSet\experimentData\Foursquare\process\experiment_8_31\newTest_uvc.txt]
+All dataset files size 18322010
+Now loading dataset file newTest_uvc
+Split data to train Set and test Set successfully!
+Data size of training is 13024
+Data size of testing is 3595
+Job Setup completed.
+Job Train completed.
+Job End.
+Evaluator value:PRECISION top 10 is 0.05171385991058145
+Evaluator value:AP top 10 is 0.06684715026928147
+Evaluator value:AUC top 10 is 0.7101833900196189
+Evaluator value:RECALL top 10 is 0.11666001088133521
+Evaluator value:NDCG top 10 is 0.11888221246032098
+Evaluator value:Entropy top 10 is 4.224520522656229
+Evaluator value:RR top 10 is 0.2485782887422231
+Evaluator value:Novelty top 10 is 27.02590861284851
+Result path is D:/Works/论文/dataSet/experimentData/Foursquare/process/experiment_8_31/result//preference_uvc.txt-mostpopular-output/mostpopular

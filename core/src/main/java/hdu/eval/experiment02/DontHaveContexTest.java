@@ -1,10 +1,8 @@
-package hdu.eval.experiment01;
+package hdu.eval.experiment02;
 
 import com.google.common.collect.BiMap;
 import hdu.bprranking.CombineFeature;
 import hdu.eval.GeoMetaPathMFMain;
-import hdu.eval.MakeContexMetaPathMain;
-import hdu.eval.MakeMetaPathMain;
 import hdu.eval.MetaPathBPRRecommenderMain;
 import net.librec.conf.Configuration;
 import net.librec.math.structure.DenseMatrix;
@@ -12,28 +10,29 @@ import net.librec.util.FileUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @Author: Skye
- * @Date: 16:20 2018/8/31
- * @Description: 测试 HeteGeoRankRec 迭代次数
+ * @Date: 15:39 2018/9/6
+ * @Description: 不使用上下文加权路径的测试
  */
-
-public class TestMetaPathIterator {
-    private static final Log LOG = LogFactory.getLog(TestMetaPathIterator.class);
+public class DontHaveContexTest {
+    private static final Log LOG = LogFactory.getLog(DontHaveContexTest.class);
 
     public static void main(String[] args) throws Exception {
+
         // 读取配置文件
         Configuration conf = new Configuration();
         Configuration.Resource resource = new Configuration.Resource("rec/skye/heterankgeomf.properties");
         conf.addResource(resource);
-        String[] metaPaths = new String[]{"up", "upcp", "upcpup", "upup", "uup", "upupt", "upcpupt",
-                "upupw_cloudCover", "upupw_humidity", "upupw_temperature",
-                "upcpupw_cloudCover", "upcpupw_humidity", "upcpupw_temperature"};
+
+        String[] metaPaths = new String[]{"up", "upcp", "upcpup", "upup", "uup"
+          //                  "upupt","upcpupt",
+           //                "upupw_cloudCover","upupw_humidity","upupw_temperature",
+          //                 "upcpupw_cloudCover","upcpupw_humidity","upcpupw_temperature"
+        };
 /*
         //1. 构造元路径语义相似度矩阵
         int[] userVenueNum = MakeMetaPathMain.run(conf);
@@ -43,20 +42,22 @@ public class TestMetaPathIterator {
         // 上下文加权元路径
         MakeContexMetaPathMain.run(conf);
 
-
 */
         //2. 构建元路径特征
-        List<String> evalList = new ArrayList<>();
 
-        for (int i = 10; i <= 60; i += 10) {
-            conf.set("metapath.rec.iterator.maximum", i + "");
+        for (String metaPath:
+             metaPaths) {
+            GeoMetaPathMFMain.run(conf,metaPath);
+        }
 
-            for (String metaPath :
-                    metaPaths) {
-                GeoMetaPathMFMain.run(conf, metaPath);
-            }
 
-            //3. 合并元路径特征
+        //3. 合并元路径特征
+        int[] topNs = new int[]{5, 10, 15, 20, 50};
+        for (Integer topN :
+                topNs) {
+
+            conf.set("bpr.rec.recommender.ranking.topn", topN + "");
+            System.out.println("topN: " + topN);
             List<String> inputFiles = new ArrayList<>();
             for (String metaPath :
                     metaPaths) {
@@ -70,15 +71,10 @@ public class TestMetaPathIterator {
             BiMap<String, Integer> map = combineFeature.getUservenueMapping();
 
             //4. BPR 训练并验证结果
-            String eval = MetaPathBPRRecommenderMain.run(conf, denseMatrix, map);
-            evalList.add(eval);
-
-            combineFeature = null;
+            MetaPathBPRRecommenderMain.run(conf, denseMatrix, map);
 
         }
-        LocalDateTime time = LocalDateTime.now();
-        String timeString = time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH_mm_ss"));
-        String outPath = conf.get("dfs.eval.dir") + "testMetaPathIterator/testMetaPathIterator" + timeString;
-        FileUtil.writeList(outPath,evalList);
+
     }
+
 }
