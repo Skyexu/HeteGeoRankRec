@@ -45,9 +45,9 @@ public class TestFactor {
         //2. 构建元路径特征
         List<String> evalList = new ArrayList<>();
 
-        for (int i = 5; i <= 35; i += 10) {
+        for (int i = 2; i <= 10; i += 1) {
             conf.set("metapath.rec.factor.number", i + "");
-
+            System.out.println("factor.number " + i);
             for (String metaPath :
                     metaPaths) {
                 GeoMetaPathMFMain.run(conf, metaPath);

@@ -16,9 +16,10 @@ import java.util.Map;
  */
 public class UserHomeTest {
     public static void main(String[] args) throws CheckinException {
-        String path  = "D:\\Works\\论文\\dataSet\\experimentData\\Foursquare\\";
-        String userVenueLatLonFile = path + "process\\user_venue_count_lat_lon.txt";
-        String outputUserHomeFile = path + "process\\user_home.txt";
+        //String path  = "D:\\Works\\论文\\dataSet\\experimentData\\Foursquare\\";
+        String path  = "D:\\Works\\论文\\dataSet\\experimentData\\Foursquare\\process\\experiment_8_31\\ASMF_DATA\\";
+        String userVenueLatLonFile = path + "user_venue_count_lat_lon_new.txt";
+        String outputUserHomeFile = path + "user_home.txt";
         UserHomeUtil.getHomeLocationFromUserCheckin(userVenueLatLonFile,outputUserHomeFile);
 
     }
